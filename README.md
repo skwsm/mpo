@@ -1,2 +1,2 @@
-# mpo
+# MPO
 Microbial phenotype ontology
