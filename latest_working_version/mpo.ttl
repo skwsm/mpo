@@ -1,2639 +1,3415 @@
-# baseURI: http://purl.jp/bio/10/mpo
-# imports: http://purl.org/dc/elements/1.1/
-# imports: http://purl.org/dc/terms/
-# imports: http://semanticscience.org/ontology/sio.owl
-# imports: http://sweet.jpl.nasa.gov/2.3/propSpaceHeight.owl
-# imports: http://www.w3.org/2002/07/owl
-# imports: http://www.w3.org/2003/01/geo/wgs84_pos
-# imports: http://www.w3.org/2004/02/skos/core
-
 @prefix : <http://purl.jp/bio/10/mpo#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sio: <http://semanticscience.org/ontology/sio.owl#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <http://purl.jp/bio/10/mpo> .
 
-<http://purl.jp/bio/10/mpo>
-  a owl:Ontology ;
-  dc:contributor "Erick Antezana" ;
-  dc:contributor "Shinobu Okamoto" ;
-  dc:creator "Shuichi Kawashima" ;
-  dc:language "English" ;
-  dc:language "Japanese" ;
-  dc:title "MPO: Microbial Phonotye Ontology" ;
-  owl:imports dc: ;
-  owl:imports dcterms: ;
-  owl:imports <http://semanticscience.org/ontology/sio.owl> ;
-  owl:imports <http://sweet.jpl.nasa.gov/2.3/propSpaceHeight.owl> ;
-  owl:imports <http://www.w3.org/2002/07/owl> ;
-  owl:imports <http://www.w3.org/2003/01/geo/wgs84_pos> ;
-  owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:versionInfo "Version 0.74 alpha" ;
-  skos:definition "An ontology for describing microbial phenotypes" ;
-.
-:MPO_00000
-  a owl:Class ;
-  rdfs:label "Microbial phenotype"@en ;
-  skos:definition "A microbial phenotype is an observable characteristic of a microbe"@en ;
-  skos:prefLabel "Microbial phenotype"@en ;
-.
-:MPO_00001
-  a owl:Class ;
-  rdfs:label "Organism"@en ;
-  skos:prefLabel "Organism"@en ;
-.
-:MPO_00010
-  a owl:Class ;
-  dcterms:identifier "MPO_00010" ;
-  rdfs:label "Location"@en ;
-  skos:prefLabel "Location"@en ;
-.
-:MPO_00011
-  a owl:Class ;
-  dcterms:identifier "MPO_00011" ;
-  rdfs:label "Sampling location"@en ;
-  rdfs:subClassOf :MPO_00010 ;
-  rdfs:subClassOf [
-      a owl:Class ;
-      owl:unionOf (
-          [
-            a owl:Restriction ;
-            owl:onProperty <http://semanticscience.org/resource/SIO_000216> ;
-            owl:someValuesFrom <http://semanticscience.org/resource/SIO_000318> ;
-          ]
-          [
-            a owl:Restriction ;
-            owl:onProperty <http://semanticscience.org/resource/SIO_000216> ;
-            owl:someValuesFrom <http://semanticscience.org/resource/SIO_000319> ;
-          ]
-          [
-            a owl:Restriction ;
-            owl:onProperty <http://semanticscience.org/resource/SIO_000216> ;
-            owl:someValuesFrom <http://semanticscience.org/resource/SIO_000438> ;
-          ]
-          [
-            a owl:Restriction ;
-            owl:onProperty <http://semanticscience.org/resource/SIO_000216> ;
-            owl:someValuesFrom <http://sweet.jpl.nasa.gov/2.3/propSpaceHeight.owl#Depth> ;
-          ]
-        ) ;
-    ] ;
-  skos:prefLabel "Sampling location"@en ;
-.
-:MPO_00012
-  a owl:Class ;
-  dcterms:identifier "MPO_00012" ;
-  rdfs:label "Habitat"@en ;
-  skos:prefLabel "Habitat"@en ;
-.
-:MPO_00101
-  a owl:Class ;
-  dcterms:identifier "MPO_00101" ;
-  rdfs:label "Growth temperature"@en ;
-  skos:prefLabel "Growth temperature"@en ;
-.
-:MPO_00102
-  a owl:Class ;
-  dcterms:identifier "MPO_00102" ;
-  rdfs:label "Optimal growth temperature"@en ;
-  rdfs:subClassOf :MPO_00101 ;
-  skos:prefLabel "Optimal growth temperature"@en ;
-.
-:MPO_00103
-  a owl:Class ;
-  dcterms:identifier "MPO_00103" ;
-  rdfs:label "Maximum growth temperature"@en ;
-  rdfs:subClassOf :MPO_00101 ;
-  skos:prefLabel "Maximum growth temperature"@en ;
-.
-:MPO_00104
-  a owl:Class ;
-  dcterms:identifier "MPO_00104" ;
-  rdfs:label "Minimum growth temperature"@en ;
-  rdfs:subClassOf :MPO_00101 ;
-  skos:prefLabel "Minimum growth temperature"@en ;
-.
-:MPO_00105
-  a owl:Class ;
-  dcterms:identifier "MPO_00105" ;
-  rdfs:label "Maximum optimal growth temperature"@en ;
-  rdfs:subClassOf :MPO_00102 ;
-  skos:prefLabel "Maximum optimal growth temperature"@en ;
-.
-:MPO_00106
-  a owl:Class ;
-  dcterms:identifier "MPO_00106" ;
-  dcterms:instructionalMethod :MPO_00106 ;
-  rdfs:label "Minimum optimal growth temperature"@en ;
-  rdfs:subClassOf :MPO_00102 ;
-  skos:prefLabel "Minimum optimal growth temperature"@en ;
-.
-:MPO_00107
-  a owl:Class ;
-  dcterms:identifier "MPO_00107" ;
-  rdfs:label "Growth pH"@en ;
-  skos:definition "Growth pH"@en ;
-  skos:prefLabel "Growth pH"@en ;
-.
-:MPO_00108
-  a owl:Class ;
-  dcterms:identifier "MPO_00108" ;
-  rdfs:label "Optimal growth pH"@en ;
-  rdfs:subClassOf :MPO_00107 ;
-  skos:definition "Optimal growth pH of a microbe"@en ;
-  skos:prefLabel "Optimal growth pH"@en ;
-.
-:MPO_00109
-  a owl:Class ;
-  dcterms:identifier "MPO_00109" ;
-  rdfs:label "Maximum growth pH"@en ;
-  rdfs:subClassOf :MPO_00107 ;
-  skos:prefLabel "Maximum growth pH"@en ;
-.
-:MPO_00110
-  a owl:Class ;
-  dcterms:identifier "MPO_00110" ;
-  rdfs:label "Minimum growth pH"@en ;
-  rdfs:subClassOf :MPO_00107 ;
-  skos:prefLabel "Minimum growth pH"@en ;
-.
-:MPO_00111
-  a owl:Class ;
-  dcterms:identifier "MPO_00111" ;
-  rdfs:label "Maximum optimal growth pH"@en ;
-  rdfs:subClassOf :MPO_00108 ;
-  skos:prefLabel "Maximum optimal growth pH"@en ;
-.
-:MPO_00112
-  a owl:Class ;
-  dcterms:identifier "MPO_00112" ;
-  rdfs:label "Minimum optimal growth pH"@en ;
-  rdfs:subClassOf :MPO_00108 ;
-  skos:prefLabel "Minimum optimal growth pH"@en ;
-.
-:MPO_00113
-  a owl:Class ;
-  dcterms:identifier "MPO_00113" ;
-  rdfs:label "Growth salinity"@en ;
-  skos:prefLabel "Growth salinity"@en ;
-.
-:MPO_00114
-  a owl:Class ;
-  dcterms:identifier "MPO_00114" ;
-  rdfs:label "Optimal growth salinity"@en ;
-  rdfs:subClassOf :MPO_00113 ;
-  skos:prefLabel "Optimal growth salinity"@en ;
-.
-:MPO_00115
-  a owl:Class ;
-  dcterms:identifier "MPO_00115" ;
-  rdfs:label "Maximum growth salinity"@en ;
-  rdfs:subClassOf :MPO_00113 ;
-  skos:prefLabel "Maximum growth salinity"@en ;
-.
-:MPO_00116
-  a owl:Class ;
-  dcterms:identifier "MPO_00116" ;
-  rdfs:label "Minimum growth salinity"@en ;
-  rdfs:subClassOf :MPO_00117 ;
-  skos:prefLabel "Minimum growth salinity"@en ;
-.
-:MPO_00117
-  a owl:Class ;
-  dcterms:identifier "MPO_00117" ;
-  rdfs:label "Maximum optimal growth salinity"@en ;
-  rdfs:subClassOf :MPO_00114 ;
-  skos:prefLabel "Maximum optimal growth salinity"@en ;
-.
-:MPO_00118
-  a owl:Class ;
-  dcterms:identifier "MPO_00118" ;
-  rdfs:label "Minimum optimal growth salinity"@en ;
-  rdfs:subClassOf :MPO_00114 ;
-  skos:prefLabel "Minimum optimal growth salinity"@en ;
-.
-:MPO_00119
-  a owl:Class ;
-  dcterms:identifier "MPO_00119" ;
-  rdfs:label "Growth pressure"@en ;
-  skos:prefLabel "Growth pressure"@en ;
-.
-:MPO_00120
-  a owl:Class ;
-  dcterms:identifier "MPO_00120" ;
-  rdfs:label "Optimal growth pressure"@en ;
-  rdfs:subClassOf :MPO_00119 ;
-  skos:prefLabel "Optimal growth pressure"@en ;
-.
-:MPO_00121
-  a owl:Class ;
-  dcterms:identifier "MPO_00121" ;
-  rdfs:label "Maximum growth pressure"@en ;
-  rdfs:subClassOf :MPO_00119 ;
-  skos:prefLabel "Maximum growth pressure"@en ;
-.
-:MPO_00122
-  a owl:Class ;
-  dcterms:identifier "MPO_00122" ;
-  rdfs:label "Minimum growth pressure"@en ;
-  rdfs:subClassOf :MPO_00119 ;
-  skos:prefLabel "Minimum growth pressure"@en ;
-.
-:MPO_00123
-  a owl:Class ;
-  dcterms:identifier "MPO_00123" ;
-  rdfs:label "Maximum optimal growth pressure"@en ;
-  rdfs:subClassOf :MPO_00120 ;
-  skos:prefLabel "Maximum optimal growth pressure"@en ;
-.
-:MPO_00124
-  a owl:Class ;
-  dcterms:identifier "MPO_00124" ;
-  rdfs:label "Minimum optimal growth pressure"@en ;
-  rdfs:subClassOf :MPO_00120 ;
-  skos:prefLabel "Minimum optimal growth pressure"@en ;
-.
-:MPO_00125
-  a owl:Class ;
-  dcterms:identifier "MPO_00125" ;
-  rdfs:label "Depth of Water"@en ;
-  skos:prefLabel "Depth of Water"@en ;
-.
-:MPO_00126
-  a owl:Class ;
-  dcterms:identifier "MPO_00126" ;
-  rdfs:label "Cell size"@en ;
-  skos:prefLabel "Cell size"@en ;
-.
-:MPO_00127
-  a owl:Class ;
-  dcterms:identifier "MPO_00127" ;
-  rdfs:label "Width"@en ;
-  rdfs:subClassOf :MPO_00126 ;
-  skos:prefLabel "Width"@en ;
-.
-:MPO_00128
-  a owl:Class ;
-  dcterms:identifier "MPO_00128" ;
-  rdfs:label "Length"@en ;
-  rdfs:subClassOf :MPO_00126 ;
-  skos:prefLabel "Length"@en ;
-.
-:MPO_00129
-  a owl:Class ;
-  dcterms:identifier "MPO_00129" ;
-  rdfs:label "Minimum width"@en ;
-  rdfs:subClassOf :MPO_00127 ;
-  skos:prefLabel "Minimum width"@en ;
-.
-:MPO_00130
-  a owl:Class ;
-  dcterms:identifier "MPO_00130" ;
-  rdfs:label "Maximum width"@en ;
-  rdfs:subClassOf :MPO_00127 ;
-  skos:prefLabel "Maximum width"@en ;
-.
-:MPO_00131
-  a owl:Class ;
-  dcterms:identifier "MPO_00131" ;
-  rdfs:label "Minimum length"@en ;
-  rdfs:subClassOf :MPO_00128 ;
-  skos:prefLabel "Minimum length"@en ;
-.
-:MPO_00132
-  a owl:Class ;
-  dcterms:identifier "MPO_00132" ;
-  rdfs:label "Maximum length"@en ;
-  rdfs:subClassOf :MPO_00128 ;
-  skos:prefLabel "Maximum length"@en ;
-.
-:MPO_00133
-  a owl:Class ;
-  dcterms:identifier "MPO_00133" ;
-  rdfs:label "Growth illuminance"@en ;
-  skos:prefLabel "Growth illuminance"@en ;
-.
-:MPO_00134
-  a owl:Class ;
-  dcterms:identifier "MPO_00134" ;
-  rdfs:label "Optimal growth illuminance"@en ;
-  rdfs:subClassOf :MPO_00133 ;
-  skos:prefLabel "Optimal growth illuminance"@en ;
-.
-:MPO_00135
-  a owl:Class ;
-  dcterms:identifier "MPO_00135" ;
-  rdfs:label "Minimum Growth illuminance"@en ;
-  rdfs:subClassOf :MPO_00133 ;
-  skos:prefLabel "Minimum Growth illuminance"@en ;
-.
-:MPO_00136
-  a owl:Class ;
-  dcterms:identifier "MPO_00136" ;
-  rdfs:label "Maximum growth illuminance"@en ;
-  rdfs:subClassOf :MPO_00133 ;
-  skos:prefLabel "Maximum growth illuminance"@en ;
-.
-:MPO_00137
-  a owl:Class ;
-  dcterms:identifier "MPO_00137" ;
-  rdfs:label "Minimum optimal growth illuminance"@en ;
-  rdfs:subClassOf :MPO_00134 ;
-  skos:prefLabel "Minimum optimal growth illuminance"@en ;
-.
-:MPO_00138
-  a owl:Class ;
-  dcterms:identifier "MPO_00138" ;
-  rdfs:label "Maximum optimal growth illuminance"@en ;
-  rdfs:subClassOf :MPO_00134 ;
-  skos:prefLabel "Maximum optimal growth illuminance"@en ;
-.
-:MPO_00139
-  a owl:Class ;
-  dcterms:identifier "MPO_00139" ;
-  rdfs:label "Growth radiation"@en ;
-  skos:prefLabel "Growth radiation"@en ;
-.
-:MPO_01000
-  a owl:Class ;
-  rdfs:label "Morphology"@en ;
-  rdfs:subClassOf :MPO_00000 ;
-  skos:definition "The form and structure of microbes and their specific structural features"@en ;
-  skos:prefLabel "Morphology"@en ;
-.
-:MPO_01001
-  a owl:Class ;
-  rdfs:label "Cell shape"@en ;
-  rdfs:subClassOf :MPO_01000 ;
-  skos:prefLabel "Cell shape"@en ;
-.
-:MPO_01002
-  a owl:Class ;
-  rdfs:label "Bean shape"@en ;
-  rdfs:subClassOf :MPO_01001 ;
-  skos:altLabel "Bean"@en ;
-  skos:altLabel "Bean-shaped"@en ;
-  skos:prefLabel "Bean shape"@en ;
-.
-:MPO_01003
-  a owl:Class ;
-  rdfs:comment "Sphere-shaped (MPO_01016) was merged to this class (MPO_01003) and the  label  and prefferred label were changed from Coccus to Sphere"@en ;
-  rdfs:label "Sphere shape"@en ;
-  rdfs:label "球菌"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Coccus> ;
-  rdfs:seeAlso <http://ja.wikipedia.org/wiki/球菌> ;
-  rdfs:subClassOf :MPO_01001 ;
-  skos:altLabel "Coccoid"@en ;
-  skos:altLabel "Coccus"@en ;
-  skos:altLabel "Coccus-shaped"@en ;
-  skos:altLabel "Sphere"@en ;
-  skos:altLabel "Sphere-shaped"@en ;
-  skos:prefLabel "Sphere shape"@en ;
-.
-:MPO_01004
-  a owl:Class ;
-  rdfs:label "Crescent shape"@en ;
-  rdfs:subClassOf :MPO_01001 ;
-  skos:altLabel "Crescent"@en ;
-  skos:altLabel "Crescent-shaped"@en ;
-  skos:prefLabel "Crescent shape"@en ;
-.
-:MPO_01005
-  a owl:Class ;
-  rdfs:label "Curved shape"@en ;
-  rdfs:subClassOf :MPO_01001 ;
-  skos:altLabel "Curved"@en ;
-  skos:altLabel "Curved-shaped"@en ;
-  skos:prefLabel "Curved shape"@en ;
-.
-:MPO_01006
-  a owl:Class ;
-  rdfs:label "Disc shape"@en ;
-  rdfs:subClassOf :MPO_01001 ;
-  skos:altLabel "Disc"@en ;
-  skos:altLabel "Disc-shaped"@en ;
-  skos:prefLabel "Disc shape"@en ;
-.
-:MPO_01007
-  a owl:Class ;
-  rdfs:label "Filament shape"@en ;
-  rdfs:subClassOf :MPO_01001 ;
-  skos:altLabel "Filament"@en ;
-  skos:altLabel "Filament-shaped"@en ;
-  skos:prefLabel "Filament shape"@en ;
-.
-:MPO_01008
-  a owl:Class ;
-  rdfs:label "Flask shape"@en ;
-  rdfs:subClassOf :MPO_01001 ;
-  skos:altLabel "Flask"@en ;
-  skos:altLabel "Flask-shaped"@en ;
-  skos:prefLabel "Flask shape"@en ;
-.
-:MPO_01009
-  a owl:Class ;
-  rdfs:label "Fusiform shape"@en ;
-  rdfs:subClassOf :MPO_01001 ;
-  skos:altLabel "Fusiform"@en ;
-  skos:altLabel "Fusiform-shaped"@en ;
-  skos:prefLabel "Fusiform shape"@en ;
-.
-:MPO_01010
-  a owl:Class ;
-  rdfs:label "Helical shape"@en ;
-  rdfs:subClassOf :MPO_01001 ;
-  skos:altLabel "Helical"@en ;
-  skos:altLabel "Helical-shaped"@en ;
-  skos:prefLabel "Helical shape"@en ;
-.
-:MPO_01011
-  a owl:Class ;
-  rdfs:label "Open-ring shape"@en ;
-  rdfs:subClassOf :MPO_01001 ;
-  skos:altLabel "Open-ring"@en ;
-  skos:altLabel "Open-ring-shaped"@en ;
-  skos:prefLabel "Open-ring shape"@en ;
-.
-:MPO_01012
-  a owl:Class ;
-  rdfs:label "Oval shape"@en ;
-  rdfs:subClassOf :MPO_01001 ;
-  skos:altLabel "Oval"@en ;
-  skos:altLabel "Oval-shaped"@en ;
-  skos:prefLabel "Oval shape"@en ;
-.
-:MPO_01013
-  a owl:Class ;
-  rdfs:label "Ovoid shape"@en ;
-  rdfs:subClassOf :MPO_01001 ;
-  skos:altLabel "Ovoid"@en ;
-  skos:altLabel "Ovoid-shaped"@en ;
-  skos:prefLabel "Ovoid shape"@en ;
-.
-:MPO_01014
-  a owl:Class ;
-  rdfs:label "Pleomorphic shape"@en ;
-  rdfs:subClassOf :MPO_01001 ;
-  skos:altLabel "Pleomorphic"@en ;
-  skos:altLabel "Pleomorphic-shaped"@en ;
-  skos:prefLabel "Pleomorphic shape"@en ;
-.
-:MPO_01015
-  a owl:Class ;
-  rdfs:label "Rod shape"@en ;
-  rdfs:label "桿菌"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Bacillus_(shape)> ;
-  rdfs:seeAlso <http://ja.wikipedia.org/wiki/桿菌> ;
-  rdfs:subClassOf :MPO_01001 ;
-  skos:altLabel "Bacillus"@en ;
-  skos:altLabel "Rod"@en ;
-  skos:altLabel "Rod-shaped"@en ;
-  skos:prefLabel "Rod shape"@en ;
-.
-:MPO_01017
-  a owl:Class ;
-  rdfs:label "Spindle shape"@en ;
-  rdfs:subClassOf :MPO_01001 ;
-  skos:altLabel "Spindle"@en ;
-  skos:prefLabel "Spindle shape"@en ;
-.
-:MPO_01018
-  a owl:Class ;
-  rdfs:label "Spiral shape"@en ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Spirillum> ;
-  rdfs:subClassOf :MPO_01001 ;
-  skos:altLabel "Spiral"@en ;
-  skos:altLabel "Spiral-shaped"@en ;
-  skos:prefLabel "Spiral"@en ;
-.
-:MPO_01019
-  a owl:Class ;
-  rdfs:label "Spore shape"@en ;
-  rdfs:subClassOf :MPO_01001 ;
-  skos:altLabel "Spore"@en ;
-  skos:altLabel "Spore-shaped"@en ;
-  skos:prefLabel "Spore shape"@en ;
-.
-:MPO_01020
-  a owl:Class ;
-  rdfs:label "Square shape"@en ;
-  rdfs:subClassOf :MPO_01001 ;
-  skos:altLabel "Square"@en ;
-  skos:altLabel "Square-shaped"@en ;
-  skos:prefLabel "Square shape"@en ;
-.
-:MPO_01021
-  a owl:Class ;
-  rdfs:label "Star shape"@en ;
-  rdfs:subClassOf :MPO_01001 ;
-  skos:altLabel "Star"@en ;
-  skos:altLabel "Star-shaped"@en ;
-  skos:prefLabel "Star shape"@en ;
-.
-:MPO_01022
-  a owl:Class ;
-  rdfs:label "Vibrio shape"@en ;
-  rdfs:subClassOf :MPO_01018 ;
-  skos:altLabel "Vibrio"@en ;
-  skos:altLabel "Vibrio-shaped"@en ;
-  skos:prefLabel "Vibrio shape"@en ;
-.
-:MPO_01023
-  a owl:Class ;
-  rdfs:label "Spirochete shape"@en ;
-  rdfs:subClassOf :MPO_01018 ;
-  skos:altLabel "Spirochete"@en ;
-  skos:altLabel "Spirochete-shaped"@en ;
-  skos:prefLabel "Spirochete shape"@en ;
-.
-:MPO_01025
-  a owl:Class ;
-  rdfs:label "Spirillum shape"@en ;
-  rdfs:subClassOf :MPO_01018 ;
-  skos:altLabel "Spirillum"@en ;
-  skos:prefLabel "Spirillum shape"@en ;
-.
-:MPO_01030
-  a owl:Class ;
-  rdfs:label "Cell arrangement"@en ;
-  rdfs:subClassOf :MPO_01000 ;
-  skos:prefLabel "Cell arrangement"@en ;
-.
-:MPO_01031
-  a owl:Class ;
-  rdfs:label "Single arrangement"@en ;
-  rdfs:subClassOf :MPO_01030 ;
-  skos:altLabel "Single"@en ;
-  skos:altLabel "Singles"@en ;
-  skos:prefLabel "Single arrangement"@en ;
-.
-:MPO_01032
-  a owl:Class ;
-  rdfs:label "Pair arrangement"@en ;
-  rdfs:subClassOf :MPO_01030 ;
-  skos:altLabel "Pair"@en ;
-  skos:altLabel "Pairs"@en ;
-  skos:prefLabel "Pair arrangement"@en ;
-.
-:MPO_01033
-  a owl:Class ;
-  rdfs:label "Tetrad arrangement"@en ;
-  rdfs:subClassOf :MPO_01030 ;
-  skos:altLabel "Tetrad"@en ;
-  skos:altLabel "Tetrads"@en ;
-  skos:prefLabel "Tetrad arrangement"@en ;
-.
-:MPO_01034
-  a owl:Class ;
-  rdfs:label "Chain arrangement"@en ;
-  rdfs:subClassOf :MPO_01030 ;
-  skos:altLabel "Chain"@en ;
-  skos:altLabel "Chains"@en ;
-  skos:prefLabel "Chain arrangement"@en ;
-.
-:MPO_01035
-  a owl:Class ;
-  rdfs:label "Filament arrangement"@en ;
-  rdfs:subClassOf :MPO_01030 ;
-  skos:altLabel "Filament"@en ;
-  skos:altLabel "Filaments"@en ;
-  skos:prefLabel "Filament arrangement"@en ;
-.
-:MPO_01036
-  a owl:Class ;
-  rdfs:label "Cluster arrangement"@en ;
-  rdfs:subClassOf :MPO_01030 ;
-  skos:altLabel "Cluster"@en ;
-  skos:altLabel "Clusters"@en ;
-  skos:prefLabel "Cluster arrangement"@en ;
-.
-:MPO_01037
-  a owl:Class ;
-  rdfs:label "Irregular colony"@en ;
-  rdfs:subClassOf :MPO_01030 ;
-  skos:prefLabel "Irregular colony"@en ;
-.
-:MPO_01038
-  a owl:Class ;
-  rdfs:label "V-shaped form arrangement"@en ;
-  rdfs:subClassOf :MPO_01030 ;
-  skos:altLabel "V-shaped form"@en ;
-  skos:altLabel "V-shaped forms"@en ;
-  skos:prefLabel "V-shaped form arrangement"@en ;
-.
-:MPO_01039
-  a owl:Class ;
-  rdfs:label "Filamentous arrangement"@en ;
-  rdfs:subClassOf :MPO_01035 ;
-  skos:altLabel "Filamentous"@en ;
-  skos:prefLabel "Filamentous arrangement"@en ;
-.
-:MPO_01040
-  a owl:Class ;
-  rdfs:label "Diplococcus arrangement"@en ;
-  rdfs:subClassOf :MPO_01032 ;
-  skos:altLabel "Diplococcus"@en ;
-  skos:prefLabel "Diplococcus arrangement"@en ;
-.
-:MPO_01041
-  a owl:Class ;
-  rdfs:label "Diplobacillus arrangement"@en ;
-  rdfs:subClassOf :MPO_01032 ;
-  skos:altLabel "Diplobacillus"@en ;
-  skos:prefLabel "Diplobacillus arrangement"@en ;
-.
-:MPO_01042
-  a owl:Class ;
-  rdfs:label "Diplococcus encapsulated arrangement"@en ;
-  rdfs:subClassOf :MPO_01032 ;
-  skos:altLabel "Diplococcus encapsulated"@en ;
-  skos:prefLabel "Diplococcus encapsulated arrangement"@en ;
-.
-:MPO_01043
-  a owl:Class ;
-  rdfs:label "Streptococcus arrangement"@en ;
-  rdfs:subClassOf :MPO_01034 ;
-  skos:altLabel "Streptococcus"@en ;
-  skos:prefLabel "Streptococcus arrangement"@en ;
-.
-:MPO_01044
-  a owl:Class ;
-  rdfs:label "Streptobacillus arrangement"@en ;
-  rdfs:subClassOf :MPO_01034 ;
-  skos:altLabel "Streptobacillus"@en ;
-  skos:prefLabel "Streptobacillus arrangement"@en ;
-.
-:MPO_01045
-  a owl:Class ;
-  rdfs:label "Sarcina arrangement"@en ;
-  rdfs:subClassOf :MPO_01036 ;
-  skos:altLabel "Sarcina"@en ;
-  skos:prefLabel "Sarcina arrangement"@en ;
-.
-:MPO_01046
-  a owl:Class ;
-  rdfs:label "Staphylococcus arrangement"@en ;
-  rdfs:subClassOf :MPO_01036 ;
-  skos:altLabel "Staphylococcus"@en ;
-  skos:prefLabel "Staphylococcus arrangement"@en ;
-.
-:MPO_01047
-  a owl:Class ;
-  rdfs:label "Sheathed arrangement"@en ;
-  rdfs:subClassOf :MPO_01030 ;
-  skos:altLabel "Sheathed"@en ;
-  skos:prefLabel "Sheathed arrangement"@en ;
-.
-:MPO_02000
-  a owl:Class ;
-  rdfs:label "Motility"@en ;
-  rdfs:subClassOf :MPO_00000 ;
-  skos:prefLabel "Motility"@en ;
-.
-:MPO_02001
-  a owl:Class ;
-  rdfs:label "Motile"@en ;
-  rdfs:subClassOf :MPO_02000 ;
-  skos:prefLabel "Motile"@en ;
-.
-:MPO_02002
-  a owl:Class ;
-  rdfs:label "Nonmotile"@en ;
-  rdfs:subClassOf :MPO_02000 ;
-  skos:prefLabel "Nonmotile"@en ;
-.
-:MPO_02003
-  a owl:Class ;
-  rdfs:label "Taxis"@en ;
-  rdfs:label "走性"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Taxis> ;
-  rdfs:subClassOf :MPO_02000 ;
-  skos:prefLabel "Taxis"@en ;
-.
-:MPO_02004
-  a owl:Class ;
-  rdfs:label "Kinesis"@en ;
-  rdfs:label "動性"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Kinesis_(biology)> ;
-  rdfs:subClassOf :MPO_02000 ;
-  skos:closeMatch <http://purl.obolibrary.org/obo/GO_0042465> ;
-  skos:prefLabel "Kinesis"@en ;
-.
-:MPO_02005
-  a owl:Class ;
-  rdfs:label "Aerotaxis"@en ;
-  rdfs:label "走気性"@ja ;
-  rdfs:subClassOf :MPO_02003 ;
-  skos:closeMatch <http://purl.obolibrary.org/obo/GO_0009454> ;
-  skos:prefLabel "Aerotaxis"@en ;
-.
-:MPO_02006
-  a owl:Class ;
-  rdfs:label "Barotaxis"@en ;
-  rdfs:label "走圧性"@ja ;
-  rdfs:subClassOf :MPO_02003 ;
-  skos:prefLabel "Barotaxis"@en ;
-.
-:MPO_02007
-  a owl:Class ;
-  rdfs:label "Chemotaxis"@en ;
-  rdfs:label "走化性"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Chemotaxis> ;
-  rdfs:subClassOf :MPO_02003 ;
-  skos:closeMatch <http://purl.obolibrary.org/obo/GO_0006935> ;
-  skos:prefLabel "Chemotaxis"@en ;
-.
-:MPO_02008
-  a owl:Class ;
-  rdfs:label "Energy taxis"@en ;
-  rdfs:subClassOf :MPO_02003 ;
-  skos:closeMatch <http://purl.obolibrary.org/obo/GO_0009453> ;
-  skos:prefLabel "Energy taxis"@en ;
-.
-:MPO_02009
-  a owl:Class ;
-  rdfs:label "Galvanotaxis"@en ;
-  rdfs:label "電気走性"@ja ;
-  rdfs:subClassOf :MPO_02003 ;
-  skos:altLabel "Electrotaxis"@en ;
-  skos:prefLabel "Galvanotaxis"@en ;
-.
-:MPO_02010
-  a owl:Class ;
-  rdfs:label "Magnetotaxis"@en ;
-  rdfs:label "走磁性"@ja ;
-  rdfs:subClassOf :MPO_02003 ;
-  skos:prefLabel "Magnetotaxis"@en ;
-.
-:MPO_02011
-  a owl:Class ;
-  rdfs:label "Gravitaxis"@en ;
-  rdfs:label "走地性"@ja ;
-  rdfs:subClassOf :MPO_02003 ;
-  skos:altLabel "Geotaxis"@en ;
-  skos:closeMatch <http://purl.obolibrary.org/obo/GO_0042332> ;
-  skos:prefLabel "Gravitaxis"@en ;
-.
-:MPO_02012
-  a owl:Class ;
-  rdfs:label "Hydrotaxis"@en ;
-  rdfs:label "走水質"@ja ;
-  rdfs:subClassOf :MPO_02003 ;
-  skos:prefLabel "Hydrotaxis"@en ;
-.
-:MPO_02013
-  a owl:Class ;
-  rdfs:label "Phototaxis"@en ;
-  rdfs:label "走光性"@ja ;
-  rdfs:subClassOf :MPO_02003 ;
-  skos:closeMatch <http://purl.obolibrary.org/obo/GO_0042331> ;
-  skos:prefLabel "Phototaxis"@en ;
-.
-:MPO_02014
-  a owl:Class ;
-  rdfs:label "Scotophobotaxis"@en ;
-  rdfs:subClassOf :MPO_02003 ;
-  skos:prefLabel "Scotophobotaxis"@en ;
-.
-:MPO_02015
-  a owl:Class ;
-  rdfs:label "Rheotaxis"@en ;
-  rdfs:label "走流性"@ja ;
-  rdfs:subClassOf :MPO_02003 ;
-  skos:prefLabel "Rheotaxis"@en ;
-.
-:MPO_02016
-  a owl:Class ;
-  rdfs:label "Thermotaxis"@en ;
-  rdfs:subClassOf :MPO_02003 ;
-  skos:closeMatch <http://purl.obolibrary.org/obo/GO_0043052> ;
-  skos:prefLabel "Thermotaxis"@en ;
-.
-:MPO_02017
-  a owl:Class ;
-  rdfs:label "Thigmotaxis"@en ;
-  rdfs:label "接触走性"@ja ;
-  rdfs:subClassOf :MPO_02003 ;
-  skos:closeMatch <http://purl.obolibrary.org/obo/GO_0001966> ;
-  skos:prefLabel "Thigmotaxis"@en ;
-.
-:MPO_02018
-  a owl:Class ;
-  rdfs:label "Orthokinesis"@en ;
-  rdfs:subClassOf :MPO_02004 ;
-  skos:closeMatch <http://purl.obolibrary.org/obo/GO_0042467> ;
-  skos:prefLabel "Orthokinesis"@en ;
-.
-:MPO_02019
-  a owl:Class ;
-  rdfs:label "Kinokinesis"@en ;
-  rdfs:subClassOf :MPO_02004 ;
-  skos:prefLabel "Kinokinesis"@en ;
-.
-:MPO_02020
-  a owl:Class ;
-  rdfs:label "Chemokinesis"@en ;
-  rdfs:subClassOf :MPO_02004 ;
-  skos:closeMatch <http://purl.obolibrary.org/obo/GO_0042466> ;
-  skos:prefLabel "Chemokinesis"@en ;
-.
-:MPO_02021
-  a owl:Class ;
-  rdfs:label "Photokinesis"@en ;
-  rdfs:subClassOf :MPO_02004 ;
-  skos:prefLabel "Photokinesis"@en ;
-.
-:MPO_02022
-  a owl:Class ;
-  rdfs:label "Gliding motility"@en ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Bacterial_gliding> ;
-  rdfs:subClassOf :MPO_02000 ;
-  skos:prefLabel "Gliding motility"@en ;
-.
-:MPO_02023
-  a owl:Class ;
-  rdfs:label "Twitching motility"@en ;
-  rdfs:subClassOf :MPO_02000 ;
-  skos:prefLabel "Twitching motility"@en ;
-.
-:MPO_02024
-  a owl:Class ;
-  rdfs:label "Swarming motility"@en ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Swarming_motility> ;
-  rdfs:subClassOf :MPO_02000 ;
-  skos:prefLabel "Swarming motility"@en ;
-.
-:MPO_02025
-  a owl:Class ;
-  rdfs:label "Swimming motility"@en ;
-  rdfs:subClassOf :MPO_02000 ;
-  skos:prefLabel "Swimming motility"@en ;
-.
-:MPO_02026
-  a owl:Class ;
-  rdfs:label "Darting motility"@en ;
-  rdfs:subClassOf :MPO_02000 ;
-  skos:prefLabel "Darting motility"@en ;
-.
-:MPO_02027
-  a owl:Class ;
-  rdfs:label "Tumbling motility"@en ;
-  rdfs:subClassOf :MPO_02000 ;
-  skos:prefLabel "Tumbling motility"@en ;
-.
-:MPO_02028
-  a owl:Class ;
-  rdfs:label "Sliding motility"@en ;
-  rdfs:subClassOf :MPO_02000 ;
-  skos:prefLabel "Sliding motility"@en ;
-.
-:MPO_02029
-  a owl:Class ;
-  rdfs:label "Floating motility"@en ;
-  rdfs:subClassOf :MPO_02000 ;
-  skos:prefLabel "Floating motility"@en ;
-.
-:MPO_03000
-  a owl:Class ;
-  rdfs:label "Classification on environmental growth condition"@en ;
-  rdfs:subClassOf :MPO_00000 ;
-  skos:prefLabel "Classification on environmental growth condition"@en ;
-.
-:MPO_03001
-  a owl:Class ;
-  rdfs:label "Thermophilic"@en ;
-  rdfs:label "好熱性"@ja ;
-  rdfs:subClassOf :MPO_03013 ;
-  skos:altLabel "Thermophile"@en ;
-  skos:definition "A microbial organism that thrives at relatively high temperatures, between 45 and 122 C (113 and 252 F)."@en ;
-  skos:prefLabel "Thermophilic"@en ;
-.
-:MPO_03002
-  a owl:Class ;
-  rdfs:label "Hyperthermophilic"@en ;
-  rdfs:label "超好熱性"@ja ;
-  rdfs:subClassOf :MPO_03004 ;
-  skos:altLabel "Hyperthermophile"@en ;
-  skos:definition "A subset of obligate thermophiles for which optimal growth temperatures are above 80C."@en ;
-  skos:prefLabel "Hyperthermophilic"@en ;
-.
-:MPO_03003
-  a owl:Class ;
-  rdfs:label "Psychrophilic"@en ;
-  rdfs:label "好冷性"@ja ;
-  rdfs:subClassOf :MPO_03013 ;
-  skos:altLabel "Cryophile"@en ;
-  skos:altLabel "Psychrophile"@en ;
-  skos:definition "Psychrophilic microbes are a type of bacteria or archia that are capable of growing and thriving in cold environment. Thier optimal growth temperatures are 15 C or lower and maximal are 20 C or lower and mimal growth temperatures are below 0 C."@en ;
-  skos:prefLabel "Psychrophilic"@en ;
-.
-:MPO_03004
-  a owl:Class ;
-  rdfs:label "Obligate thermophilic"@en ;
-  rdfs:label "偏性好熱性"@ja ;
-  rdfs:subClassOf :MPO_03001 ;
-  skos:altLabel "Extreme thermophile"@en ;
-  skos:altLabel "Obligate thermophile"@en ;
-  skos:prefLabel "Obligate thermophilic"@en ;
-.
-:MPO_03005
-  a owl:Class ;
-  rdfs:label "Facultative thermophilic"@en ;
-  rdfs:label "通性好熱性"@ja ;
-  rdfs:subClassOf :MPO_03001 ;
-  skos:altLabel "Facultative thermophile"@en ;
-  skos:prefLabel "Facultative thermophilic"@en ;
-.
-:MPO_03006
-  a owl:Class ;
-  rdfs:label "Classification of growth salinity"@en ;
-  rdfs:label "耐塩性"@ja ;
-  rdfs:range :MPO_03006 ;
-  rdfs:subClassOf :MPO_03000 ;
-  skos:prefLabel "Classification of growth salinity"@en ;
-.
-:MPO_03007
-  a owl:Class ;
-  rdfs:label "Halophile"@en ;
-  rdfs:label "好塩性微生物"@ja ;
-  rdfs:subClassOf :MPO_03006 ;
-  skos:prefLabel "Halophilic"@en ;
-.
-:MPO_03008
-  a owl:Class ;
-  rdfs:label "Halotolerant"@en ;
-  rdfs:label "耐塩性微生物"@ja ;
-  rdfs:subClassOf :MPO_03006 ;
-  skos:prefLabel "Halotolerant"@en ;
-.
-:MPO_03009
-  a owl:Class ;
-  rdfs:label "Classification of growth pH"@en ;
-  rdfs:subClassOf :MPO_03000 ;
-  skos:prefLabel "Classification of growth pH"@en ;
-.
-:MPO_03010
-  a owl:Class ;
-  rdfs:label "Acidophilic"@en ;
-  rdfs:label "好酸性微生物"@ja ;
-  rdfs:subClassOf :MPO_03009 ;
-  skos:altLabel "Acidophile"@en ;
-  skos:prefLabel "Acidophilic"@en ;
-.
-:MPO_03011
-  a owl:Class ;
-  rdfs:label "Alkaliphilic"@en ;
-  rdfs:label "好アルカリ性微生物"@ja ;
-  rdfs:subClassOf :MPO_03009 ;
-  skos:altLabel "Alkalinophile"@en ;
-  skos:altLabel "Alkaliphile"@en ;
-  skos:altLabel "Alkalophile"@en ;
-  skos:altLabel "Basophile"@en ;
-  skos:prefLabel "Alkaliphilic"@en ;
-.
-:MPO_03012
-  a owl:Class ;
-  rdfs:label "Neutrophilic"@en ;
-  rdfs:subClassOf :MPO_03009 ;
-  skos:altLabel "Neutrophile"@en ;
-  skos:prefLabel "Neutrophilic"@en ;
-.
-:MPO_03013
-  a owl:Class ;
-  rdfs:label "Classification of growth temperature"@en ;
-  rdfs:label "温度許容度"@ja ;
-  rdfs:subClassOf :MPO_03000 ;
-  skos:altLabel "Temperature tolerance"@en ;
-  skos:prefLabel "Classification of growth temperature"@en ;
-.
-:MPO_03014
-  a owl:Class ;
-  rdfs:label "Classification of growth pressure"@en ;
-  rdfs:subClassOf :MPO_03000 ;
-  skos:prefLabel "Classification of growth pressure"@en ;
-.
-:MPO_03015
-  a owl:Class ;
-  rdfs:label "Peizophilic"@en ;
-  rdfs:label "好高圧性"@ja ;
-  rdfs:subClassOf :MPO_03014 ;
-  skos:altLabel "Peizophile"@en ;
-  skos:prefLabel "Peizophilic"@en ;
-.
-:MPO_03016
-  a owl:Class ;
-  rdfs:label "Obligate piezophilic"@en ;
-  rdfs:label "偏性好高圧微生物"@ja ;
-  rdfs:subClassOf :MPO_03015 ;
-  skos:altLabel "Obligate piezophile"@en ;
-  skos:prefLabel "Obligate piezophilic"@en ;
-.
-:MPO_03017
-  a owl:Class ;
-  rdfs:label "Facultative piezophilic"@en ;
-  rdfs:label "通性好高圧微生物"@ja ;
-  rdfs:subClassOf :MPO_03015 ;
-  skos:altLabel "Facultative piezophile"@en ;
-  skos:prefLabel "Facultative piezophilic"@en ;
-.
-:MPO_03018
-  a owl:Class ;
-  rdfs:label "Radioresistant"@en ;
-  rdfs:label "放射線耐性"@ja ;
-  rdfs:subClassOf :MPO_03000 ;
-  skos:prefLabel "Radioresistant"@en ;
-.
-:MPO_03019
-  a owl:Class ;
-  rdfs:label "Psychrotrophic"@en ;
-  rdfs:label "低温性"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Psychrotrophic_bacteria> ;
-  rdfs:subClassOf :MPO_03003 ;
-  skos:definition "Psychrotrophic microbes are cold-tolerant bacteria or archaea that can grow or even thrive in a cold environment although their optimal growth temperatures are between above 15 C and below 20 C. Their maximal growth temperatures are below 20 C."@en ;
-  skos:prefLabel "Psychrotrophic"@en ;
-  skos:prefLabel "Psychrotrophile"@en ;
-.
-:MPO_03020
-  a owl:Class ;
-  rdfs:label "Thermotolerant"@en ;
-  rdfs:label "耐熱性"@ja ;
-  rdfs:subClassOf :MPO_03013 ;
-  skos:prefLabel "Thermotolerant"@en ;
-.
-:MPO_03021
-  a owl:Class ;
-  rdfs:label "Psychrotolerant"@en ;
-  rdfs:label "耐寒性"@ja ;
-  rdfs:subClassOf :MPO_03013 ;
-  skos:prefLabel "Psychrotolerant"@en ;
-.
-:MPO_03022
-  a owl:Class ;
-  rdfs:label "Mesophilic"@en ;
-  rdfs:label "中等温度好性"@ja ;
-  rdfs:subClassOf :MPO_03013 ;
-  skos:altLabel "Mesophile"@en ;
-  skos:definition "A mibrobial organism that thrives at moderate temperature, typically between 20 and 45 C (68 and 113 F)."@en ;
-  skos:prefLabel "Mesophilic"@en ;
-.
-:MPO_03023
-  a owl:Class ;
-  rdfs:label "Alkalitolerant"@en ;
-  rdfs:subClassOf :MPO_03009 ;
-  skos:prefLabel "Alkalitolerant"@en ;
-.
-:MPO_03024
-  a owl:Class ;
-  rdfs:label "Euryhaline"@en ;
-  rdfs:label "広塩性の"@ja ;
-  rdfs:subClassOf :MPO_03006 ;
-  skos:prefLabel "Euryhaline"@en ;
-.
-:MPO_03025
-  a owl:Class ;
-  rdfs:label "Stenohaline"@en ;
-  rdfs:label "狭塩性の"@ja ;
-  rdfs:subClassOf :MPO_03006 ;
-  skos:prefLabel "Stenohaline"@en ;
-.
-:MPO_04000
-  a owl:Class ;
-  rdfs:label "Metabolism related phenotype"@en ;
-  rdfs:subClassOf :MPO_00000 ;
-  skos:prefLabel "Metabolism related phenotype"@en ;
-.
-:MPO_04001
-  a owl:Class ;
-  rdfs:label "Oxygen requirement"@en ;
-  rdfs:subClassOf :MPO_04000 ;
-  skos:prefLabel "Oxygen requirement"@en ;
-.
-:MPO_04002
-  a owl:Class ;
-  rdfs:label "Aerobe"@en ;
-  rdfs:label "好気性微生物"@ja ;
-  rdfs:subClassOf :MPO_04001 ;
-  skos:prefLabel "Aerobe"@en ;
-.
-:MPO_04003
-  a owl:Class ;
-  rdfs:label "Anaerobe"@en ;
-  rdfs:label "嫌気性微生物"@ja ;
-  rdfs:subClassOf :MPO_04001 ;
-  skos:prefLabel "Anaerobe"@en ;
-.
-:MPO_04004
-  a owl:Class ;
-  rdfs:label "Obligate aerobe"@en ;
-  rdfs:label "偏性好気性微生物"@ja ;
-  rdfs:subClassOf :MPO_04002 ;
-  skos:prefLabel "Obligate aerobe"@en ;
-.
-:MPO_04005
-  a owl:Class ;
-  rdfs:label "Facultative aerobe"@en ;
-  rdfs:label "通性好気性微生物"@ja ;
-  rdfs:subClassOf :MPO_04002 ;
-  skos:prefLabel "Facultative aerobe"@en ;
-.
-:MPO_04006
-  a owl:Class ;
-  rdfs:label "Obligate anaerobe"@en ;
-  rdfs:label "偏性嫌気微生物"@ja ;
-  rdfs:subClassOf :MPO_04003 ;
-  skos:prefLabel "Obligate anaerobe"@en ;
-.
-:MPO_04007
-  a owl:Class ;
-  rdfs:label "Facultative anaerobe"@en ;
-  rdfs:label "通性嫌気微生物"@ja ;
-  rdfs:subClassOf :MPO_04003 ;
-  skos:prefLabel "Facultative anaerobe"@en ;
-.
-:MPO_04008
-  a owl:Class ;
-  rdfs:label "Aerotolerant organism"@en ;
-  rdfs:subClassOf :MPO_04003 ;
-  skos:prefLabel "Aerotolerant organism"@en ;
-.
-:MPO_04009
-  a owl:Class ;
-  rdfs:label "Microaerophile"@en ;
-  rdfs:label "微好気性生物"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Microaerophile> ;
-  rdfs:subClassOf :MPO_04002 ;
-  skos:prefLabel "Microaerophile"@en ;
-.
-:MPO_04010
-  a owl:Class ;
-  rdfs:label "Energy source"@en ;
-  rdfs:subClassOf :MPO_04000 ;
-  skos:prefLabel "Energy source"@en ;
-.
-:MPO_04011
-  a owl:Class ;
-  rdfs:label "Autotrophic"@en ;
-  rdfs:label "独立栄養"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Autotrophic> ;
-  rdfs:subClassOf :MPO_04010 ;
-  skos:altLabel "Autotroph"@en ;
-  skos:prefLabel "Autotrophic"@en ;
-.
-:MPO_04012
-  a owl:Class ;
-  rdfs:label "Heterotrophic"@en ;
-  rdfs:label "従属栄養性"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Heterotrophic> ;
-  rdfs:subClassOf :MPO_04010 ;
-  skos:altLabel "Heterotroph"@en ;
-  skos:prefLabel "Heterotrophic"@en ;
-.
-:MPO_04013
-  a owl:Class ;
-  rdfs:label "Lithotrophic"@en ;
-  rdfs:label "無機栄養性"@ja ;
-  rdfs:subClassOf :MPO_04010 ;
-  skos:altLabel "Lithotroph"@en ;
-  skos:altLabel "無機栄養細菌"@ja ;
-  skos:prefLabel "Lithotrophic"@en ;
-.
-:MPO_04014
-  a owl:Class ;
-  rdfs:label "Methanotrophic"@en ;
-  rdfs:subClassOf :MPO_04015 ;
-  skos:altLabel "Methanotroph"@en ;
-  skos:prefLabel "Methanotrophic"@en ;
-.
-:MPO_04015
-  a owl:Class ;
-  rdfs:label "Methylotrophic"@en ;
-  rdfs:subClassOf :MPO_04010 ;
-  skos:altLabel "Methylotroph"@en ;
-  skos:prefLabel "Methylotrophic"@en ;
-.
-:MPO_04016
-  a owl:Class ;
-  rdfs:label "Oligotrophic"@en ;
-  rdfs:subClassOf :MPO_04010 ;
-  skos:altLabel "Oligotroph"@en ;
-  skos:prefLabel "Oligotrophic"@en ;
-.
-:MPO_04017
-  a owl:Class ;
-  rdfs:label "Organotrophic"@en ;
-  rdfs:label "有機栄養の"@ja ;
-  rdfs:subClassOf :MPO_04010 ;
-  skos:altLabel "Organotroph"@en ;
-  skos:prefLabel "Organotrophic"@en ;
-.
-:MPO_04018
-  a owl:Class ;
-  rdfs:label "Diazotrophic"@en ;
-  rdfs:label "ジアゾ栄養生物"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Diazotroph> ;
-  rdfs:subClassOf :MPO_04010 ;
-  skos:altLabel "Diazotroph"@en ;
-  skos:prefLabel "Diazotrophic"@en ;
-.
-:MPO_04019
-  a owl:Class ;
-  rdfs:label "Phototrophic"@en ;
-  rdfs:label "光栄養"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Phototroph> ;
-  rdfs:subClassOf :MPO_04010 ;
-  skos:altLabel "Phototroph"@en ;
-  skos:prefLabel "Phototrophic"@en ;
-.
-:MPO_04020
-  a owl:Class ;
-  rdfs:label "Photosynthetic"@en ;
-  rdfs:label "光合成の"@ja ;
-  rdfs:subClassOf :MPO_04010 ;
-  skos:altLabel "Photosynthetic microbe"@en ;
-  skos:prefLabel "Photosynthetic"@en ;
-.
-:MPO_04021
-  a owl:Class ;
-  rdfs:label "Mixotrophic"@en ;
-  rdfs:subClassOf :MPO_04010 ;
-  skos:altLabel "Mixotroph"@en ;
-  skos:prefLabel "Mixotrophic"@en ;
-.
-:MPO_04022
-  a owl:Class ;
-  rdfs:label "Chemotrophic"@en ;
-  rdfs:label "化学合成生物"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Chemotrophic> ;
-  rdfs:subClassOf :MPO_04010 ;
-  skos:altLabel "Chemotroph"@en ;
-  skos:prefLabel "Chemotrophic"@en ;
-.
-:MPO_04023
-  a owl:Class ;
-  rdfs:label "Microanaerobe"@en ;
-  rdfs:subClassOf :MPO_04003 ;
-  skos:prefLabel "Microanaerobe"@en ;
-.
-:MPO_04024
-  a owl:Class ;
-  rdfs:label "Copiotrophic"@en ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Copiotrophic> ;
-  rdfs:subClassOf :MPO_04010 ;
-  skos:altLabel "Copiotroph"@en ;
-  skos:prefLabel "Copiotrophic"@en ;
-.
-:MPO_04025
-  a owl:Class ;
-  rdfs:label "Photoorganotrophic"@en ;
-  rdfs:subClassOf :MPO_04019 ;
-  skos:altLabel "Photoorganotroph"@en ;
-  skos:prefLabel "Photoorganotrophic"@en ;
-.
-:MPO_04026
-  a owl:Class ;
-  rdfs:label "Photolithotrophic"@en ;
-  rdfs:subClassOf :MPO_04019 ;
-  skos:altLabel "Photolithotroph"@en ;
-  skos:prefLabel "Photolithotrophic"@en ;
-.
-:MPO_04027
-  a owl:Class ;
-  rdfs:label "Photoheterotrophic"@en ;
-  rdfs:label "光従属栄養"@ja ;
-  rdfs:subClassOf :MPO_04019 ;
-  skos:altLabel "Photoheterotroph"@en ;
-  skos:prefLabel "Photoheterotrophic"@en ;
-.
-:MPO_04028
-  a owl:Class ;
-  rdfs:label "Photoautotrophic"@en ;
-  rdfs:label "光独立栄養"@ja ;
-  rdfs:subClassOf :MPO_04019 ;
-  skos:altLabel "Photoautotroph"@en ;
-  skos:prefLabel "Photoautotrophic"@en ;
-.
-:MPO_04029
-  a owl:Class ;
-  rdfs:label "Photoorganoheterotrophic"@en ;
-  rdfs:subClassOf :MPO_04019 ;
-  skos:altLabel "Photoorganoheterotroph"@en ;
-  skos:prefLabel "Photoorganoheterotrophic"@en ;
-.
-:MPO_04030
-  a owl:Class ;
-  rdfs:label "Photoorganoautotrophic"@en ;
-  rdfs:subClassOf :MPO_04019 ;
-  skos:altLabel "Photoorganoautotroph"@en ;
-  skos:prefLabel "Photoorganoautotrophic"@en ;
-.
-:MPO_04031
-  a owl:Class ;
-  rdfs:label "Photolithoheterotrophic"@en ;
-  rdfs:subClassOf :MPO_04019 ;
-  skos:altLabel "Photolithoheterotroph"@en ;
-  skos:prefLabel "Photolithoheterotrophic"@en ;
-.
-:MPO_04032
-  a owl:Class ;
-  rdfs:label "Photolithoautotrophic"@en ;
-  rdfs:subClassOf :MPO_04019 ;
-  skos:altLabel "Photolithoautotroph"@en ;
-  skos:prefLabel "Photolithoautotrophic"@en ;
-.
-:MPO_04033
-  a owl:Class ;
-  rdfs:label "Chemoorganotrophic"@en ;
-  rdfs:subClassOf :MPO_04022 ;
-  skos:altLabel "Chemoorganotroph"@en ;
-  skos:prefLabel "Chemoorganotrophic"@en ;
-.
-:MPO_04034
-  a owl:Class ;
-  rdfs:label "Chemolithotrophic"@en ;
-  rdfs:subClassOf :MPO_04022 ;
-  skos:altLabel "Chemolithotroph"@en ;
-  skos:prefLabel "Chemolithotrophic"@en ;
-.
-:MPO_04035
-  a owl:Class ;
-  rdfs:label "Chemoheterotrophic"@en ;
-  rdfs:subClassOf :MPO_04022 ;
-  skos:altLabel "Chemoheterotroph"@en ;
-  skos:prefLabel "Chemoheterotrophic"@en ;
-.
-:MPO_04036
-  a owl:Class ;
-  rdfs:label "Chemoautotrophic"@en ;
-  rdfs:subClassOf :MPO_04022 ;
-  skos:altLabel "Chemoautotroph"@en ;
-  skos:prefLabel "Chemoautotrophic"@en ;
-.
-:MPO_04037
-  a owl:Class ;
-  rdfs:label "Chemoorganoheterotrophic"@en ;
-  rdfs:subClassOf :MPO_04022 ;
-  skos:altLabel "Chemoorganoheterotroph"@en ;
-  skos:prefLabel "Chemoorganoheterotrophic"@en ;
-.
-:MPO_04038
-  a owl:Class ;
-  rdfs:label "Chemoorganoautotrophic"@en ;
-  rdfs:subClassOf :MPO_04022 ;
-  skos:altLabel "Chemoorganoautotroph"@en ;
-  skos:prefLabel "Chemoorganoautotrophic"@en ;
-.
-:MPO_04039
-  a owl:Class ;
-  rdfs:label "Chemolithoheterotrophic"@en ;
-  rdfs:subClassOf :MPO_04022 ;
-  skos:altLabel "Chemolithoheterotroph"@en ;
-  skos:prefLabel "Chemolithoheterotrophic"@en ;
-.
-:MPO_04040
-  a owl:Class ;
-  rdfs:label "Chemolithoautotrophic"@en ;
-  rdfs:label "独立栄養化学合成性"@ja ;
-  rdfs:subClassOf :MPO_04022 ;
-  skos:altLabel "Chemolithoautotroph"@en ;
-  skos:prefLabel "Chemolithoautotrophic"@en ;
-  skos:prefLabel "独立栄養化学合成細菌"@ja ;
-.
-:MPO_04041
-  a owl:Class ;
-  rdfs:label "Lithoautotrophic"@en ;
-  rdfs:subClassOf :MPO_04013 ;
-  skos:altLabel "Lithoautotroph"@en ;
-  skos:prefLabel "Lithoautotrophic"@en ;
-.
-:MPO_04042
-  a owl:Class ;
-  rdfs:label "Lithoheterotrophic"@en ;
-  rdfs:subClassOf :MPO_04013 ;
-  skos:altLabel "Lithoheterotroph"@en ;
-  skos:prefLabel "Lithoheterotrophic"@en ;
-.
-:MPO_04043
-  a owl:Class ;
-  rdfs:label "Carboxydotrophic"@en ;
-  rdfs:subClassOf :MPO_04010 ;
-  skos:altLabel "Carboxydotroph"@en ;
-  skos:definition "Any organism that can tolerate a high concentration of carbon monoxide"@en ;
-  skos:prefLabel "Carboxydotrophic"@en ;
-.
-:MPO_04044
-  a owl:Class ;
-  rdfs:label "Auxotrophic"@en ;
-  rdfs:label "栄養要求株"@zh-tw ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Auxotrophy> ;
-  rdfs:subClassOf :MPO_04012 ;
-  skos:prefLabel "Auxotrophic"@en ;
-.
-:MPO_04045
-  a owl:Class ;
-  rdfs:label "Capnophilic"@en ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Capnophile> ;
-  rdfs:subClassOf :MPO_04010 ;
-  skos:altLabel "Capnophile"@en ;
-  skos:prefLabel "Capnophilic"@en ;
-.
-:MPO_04046
-  a owl:Class ;
-  rdfs:label "Fermentation"@en ;
-  rdfs:subClassOf :MPO_04000 ;
-  skos:prefLabel "Fermentation"@en ;
-.
-:MPO_04047
-  a owl:Class ;
-  rdfs:label "Alcohol fermentation"@en ;
-  rdfs:subClassOf :MPO_04046 ;
-  skos:prefLabel "Alcohol fermentation"@en ;
-.
-:MPO_04048
-  a owl:Class ;
-  rdfs:label "Acetate fermentation"@en ;
-  rdfs:subClassOf :MPO_04046 ;
-  skos:prefLabel "Acetate fermentation"@en ;
-.
-:MPO_04049
-  a owl:Class ;
-  rdfs:label "Lactate fermentation"@en ;
-  rdfs:subClassOf :MPO_04046 ;
-  skos:prefLabel "Lactate fermentation"@en ;
-.
-:MPO_04050
-  a owl:Class ;
-  rdfs:label "Aceton-butanol fermentation"@en ;
-  rdfs:subClassOf :MPO_04046 ;
-  skos:prefLabel "Aceton-butanol fermentation"@en ;
-.
-:MPO_04052
-  a owl:Class ;
-  rdfs:label "Phagotrophic"@en ;
-  rdfs:label "摂食栄養"@ja ;
-  rdfs:subClassOf :MPO_04010 ;
-  skos:prefLabel "Phagotrophic"@en ;
-.
-:MPO_04053
-  a owl:Class ;
-  rdfs:label "Assimilation"@en ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Assimilation_(biology)> ;
-  rdfs:subClassOf :MPO_04000 ;
-  skos:prefLabel "Assimilation"@en ;
-.
-:MPO_04054
-  a owl:Class ;
-  rdfs:label "Catabolism"@en ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Catabolism> ;
-  rdfs:subClassOf :MPO_04000 ;
-  skos:altLabel "Dissimilatory process"@en ;
-  skos:prefLabel "Catabolism"@en ;
-.
-:MPO_04055
-  a owl:Class ;
-  rdfs:label "Nitrogen fixation"@en ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Nitrogen_fixation> ;
-  rdfs:subClassOf :MPO_04053 ;
-  skos:prefLabel "Nitrogen fixation"@en ;
-.
-:MPO_04056
-  a owl:Class ;
-  rdfs:label "Biosynthesis"@en ;
-  rdfs:subClassOf :MPO_04000 ;
-  skos:prefLabel "Biosynthesis"@en ;
-.
-:MPO_04057
-  a owl:Class ;
-  rdfs:label "Lipid"@en ;
-  rdfs:subClassOf :MPO_04056 ;
-  skos:prefLabel "Lipid"@en ;
-.
-:MPO_04058
-  a owl:Class ;
-  rdfs:label "Quinone"@en ;
-  rdfs:subClassOf :MPO_04057 ;
-  skos:prefLabel "Quinone"@en ;
-.
-:MPO_04059
-  a owl:Class ;
-  rdfs:label "Benzoquinone"@en ;
-  rdfs:subClassOf :MPO_04058 ;
-  skos:prefLabel "Benzoquinone"@en ;
-.
-:MPO_04060
-  a owl:Class ;
-  rdfs:label "Naphthoquinone"@en ;
-  rdfs:subClassOf :MPO_04058 ;
-  skos:prefLabel "Naphthoquinone"@en ;
-.
-:MPO_04061
-  a owl:Class ;
-  rdfs:label "MK-4"@en ;
-  rdfs:subClassOf :MPO_04073 ;
-  skos:altLabel "Menaquinone-4"@en ;
-  skos:prefLabel "MK-4"@en ;
-.
-:MPO_04062
-  a owl:Class ;
-  rdfs:label "MK-5"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/14009404> ;
-  rdfs:subClassOf :MPO_04073 ;
-  skos:altLabel "Menaquinone-5"@en ;
-  skos:prefLabel "MK-5"@en ;
-.
-:MPO_04063
-  a owl:Class ;
-  rdfs:label "MK-6"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/5283547> ;
-  rdfs:subClassOf :MPO_04073 ;
-  skos:altLabel "Menaquinone-6"@en ;
-  skos:prefLabel "MK-6"@en ;
-.
-:MPO_04064
-  a owl:Class ;
-  rdfs:label "MK-7"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/5287554> ;
-  rdfs:subClassOf :MPO_04073 ;
-  skos:altLabel "Menaquinone-7"@en ;
-  skos:prefLabel "MK-7"@en ;
-.
-:MPO_04065
-  a owl:Class ;
-  rdfs:label "MK-8"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/45479636> ;
-  rdfs:subClassOf :MPO_04073 ;
-  skos:altLabel "Menaquinone-8"@en ;
-  skos:prefLabel "MK-8"@en ;
-.
-:MPO_04066
-  a owl:Class ;
-  rdfs:label "MK-9"@en ;
-  rdfs:subClassOf :MPO_04073 ;
-  skos:altLabel "Menaquinone-9"@en ;
-  skos:prefLabel "MK-9"@en ;
-.
-:MPO_04067
-  a owl:Class ;
-  rdfs:label "MK-10"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/9988135> ;
-  rdfs:subClassOf :MPO_04073 ;
-  skos:altLabel "Menaquinone-10"@en ;
-  skos:prefLabel "MK-10"@en ;
-.
-:MPO_04068
-  a owl:Class ;
-  rdfs:label "MK-11"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/6442190> ;
-  rdfs:subClassOf :MPO_04073 ;
-  skos:altLabel "Menaquinone-11"@en ;
-  skos:prefLabel "MK-11"@en ;
-.
-:MPO_04069
-  a owl:Class ;
-  rdfs:label "MK-12"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/6442143> ;
-  rdfs:subClassOf :MPO_04073 ;
-  skos:altLabel "Menaquinone-12"@en ;
-  skos:prefLabel "MK-12"@en ;
-.
-:MPO_04070
-  a owl:Class ;
-  rdfs:label "MK-13"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/14325016> ;
-  rdfs:subClassOf :MPO_04073 ;
-  skos:altLabel "Menaquinone-13"@en ;
-  skos:prefLabel "MK-13"@en ;
-.
-:MPO_04071
-  a owl:Class ;
-  rdfs:label "MK-14"@en ;
-  rdfs:subClassOf :MPO_04073 ;
-  skos:altLabel "Menaquinone-14"@en ;
-  skos:prefLabel "MK-14"@en ;
-.
-:MPO_04072
-  a owl:Class ;
-  rdfs:label "MK-n"@en ;
-  rdfs:subClassOf :MPO_04073 ;
-  skos:altLabel "Menaquinone-n"@en ;
-  skos:prefLabel "MK-n"@en ;
-.
-:MPO_04073
-  a owl:Class ;
-  rdfs:label "MK"@en ;
-  rdfs:subClassOf :MPO_04060 ;
-  skos:altLabel "Menaquinone"@en ;
-  skos:prefLabel "MK"@en ;
-.
-:MPO_04074
-  a owl:Class ;
-  rdfs:label "DMK"@en ;
-  rdfs:subClassOf :MPO_04060 ;
-  skos:altLabel "Demethylmenaquinone"@en ;
-  skos:prefLabel "DMK"@en ;
-.
-:MPO_04075
-  a owl:Class ;
-  rdfs:label "DMK-5"@en ;
-  rdfs:subClassOf :MPO_04074 ;
-  skos:altLabel "Demethylmenaquinone-5"@en ;
-  skos:prefLabel "DMK-5"@en ;
-.
-:MPO_04076
-  a owl:Class ;
-  rdfs:label "DMK-6"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/25245576> ;
-  rdfs:subClassOf :MPO_04074 ;
-  skos:altLabel "Demethylmenaquinone-6"@en ;
-  skos:prefLabel "DMK-6"@en ;
-.
-:MPO_04077
-  a owl:Class ;
-  rdfs:label "DMK-7"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/25244494> ;
-  rdfs:subClassOf :MPO_04074 ;
-  skos:altLabel "Demethylmenaquinone-7"@en ;
-  skos:prefLabel "DMK-7"@en ;
-.
-:MPO_04078
-  a owl:Class ;
-  rdfs:label "DMK-8"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/5376004> ;
-  rdfs:subClassOf :MPO_04074 ;
-  skos:altLabel "Demethylmenaquinone-8"@en ;
-  skos:prefLabel "DMK-8"@en ;
-.
-:MPO_04079
-  a owl:Class ;
-  rdfs:label "MTK"@en ;
-  rdfs:subClassOf :MPO_04060 ;
-  skos:altLabel "Methionaquinone-7"@en ;
-  skos:prefLabel "MTK"@en ;
-.
-:MPO_04080
-  a owl:Class ;
-  rdfs:label "MTK-7"@en ;
-  rdfs:subClassOf :MPO_04079 ;
-  skos:altLabel "Methionaquinone-7"@en ;
-  skos:prefLabel "MTK-7"@en ;
-.
-:MPO_04081
-  a owl:Class ;
-  rdfs:label "Q-3"@en ;
-  rdfs:subClassOf :MPO_04093 ;
-  skos:altLabel "Ubiquinone-3"@en ;
-  skos:prefLabel "Q-3"@en ;
-.
-:MPO_04082
-  a owl:Class ;
-  rdfs:label "Q-4"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/16219098> ;
-  rdfs:subClassOf :MPO_04093 ;
-  skos:altLabel "Ubiquinone-4"@en ;
-  skos:prefLabel "Q-4"@en ;
-.
-:MPO_04083
-  a owl:Class ;
-  rdfs:label "Q-5"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/4462> ;
-  rdfs:subClassOf :MPO_04093 ;
-  skos:altLabel "Ubiquinone-5"@en ;
-  skos:prefLabel "Q-5"@en ;
-.
-:MPO_04084
-  a owl:Class ;
-  rdfs:label "Q-6"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/5283544> ;
-  rdfs:subClassOf :MPO_04093 ;
-  skos:altLabel "Ubiquinone-6"@en ;
-  skos:prefLabel "Q-6"@en ;
-.
-:MPO_04085
-  a owl:Class ;
-  rdfs:label "Q-7"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/5289540> ;
-  rdfs:subClassOf :MPO_04093 ;
-  skos:altLabel "Ubiquinone-7"@en ;
-  skos:prefLabel "Q-7"@en ;
-.
-:MPO_04086
-  a owl:Class ;
-  rdfs:label "Q-8"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/5283546> ;
-  rdfs:subClassOf :MPO_04093 ;
-  skos:altLabel "Ubiquinone-8"@en ;
-  skos:prefLabel "Q-8"@en ;
-.
-:MPO_04087
-  a owl:Class ;
-  rdfs:label "Q-9"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/5280473> ;
-  rdfs:subClassOf :MPO_04093 ;
-  skos:altLabel "Ubiquinone-9"@en ;
-  skos:prefLabel "Q-9"@en ;
-.
-:MPO_04088
-  a owl:Class ;
-  rdfs:label "Q-10"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/5281915> ;
-  rdfs:subClassOf :MPO_04093 ;
-  skos:altLabel "Ubiquinone-10"@en ;
-  skos:prefLabel "Q-10"@en ;
-.
-:MPO_04089
-  a owl:Class ;
-  rdfs:label "Q-11"@en ;
-  rdfs:subClassOf :MPO_04093 ;
-  skos:altLabel "Ubiquinone-11"@en ;
-  skos:prefLabel "Q-11"@en ;
-.
-:MPO_04090
-  a owl:Class ;
-  rdfs:label "Q-12"@en ;
-  rdfs:subClassOf :MPO_04093 ;
-  skos:altLabel "Ubiquinone-12"@en ;
-  skos:prefLabel "Q-12"@en ;
-.
-:MPO_04091
-  a owl:Class ;
-  rdfs:label "Q-13"@en ;
-  rdfs:subClassOf :MPO_04093 ;
-  skos:altLabel "Ubiquinone-13"@en ;
-  skos:prefLabel "Q-13"@en ;
-.
-:MPO_04092
-  a owl:Class ;
-  rdfs:label "Q-14"@en ;
-  rdfs:subClassOf :MPO_04093 ;
-  skos:altLabel "Ubiquinone-14"@en ;
-  skos:prefLabel "Q-14"@en ;
-.
-:MPO_04093
-  a owl:Class ;
-  rdfs:label "Q"@en ;
-  rdfs:subClassOf :MPO_04059 ;
-  skos:altLabel "Ubiquinone"@en ;
-  skos:prefLabel "Q"@en ;
-.
-:MPO_04094
-  a owl:Class ;
-  rdfs:label "MQ"@en ;
-  rdfs:subClassOf :MPO_04059 ;
-  skos:prefLabel "MQ"@en ;
-.
-:MPO_04095
-  a owl:Class ;
-  rdfs:label "MQ-8"@en ;
-  rdfs:subClassOf :MPO_04094 ;
-  skos:altLabel "18-methylene-ubiquinone-8" ;
-  skos:prefLabel "MQ-8"@en ;
-.
-:MPO_04096
-  a owl:Class ;
-  rdfs:label "MDMQ"@en ;
-  rdfs:subClassOf :MPO_04059 ;
-  skos:prefLabel "MDMQ"@en ;
-.
-:MPO_04097
-  a owl:Class ;
-  rdfs:label "MDMQ-6"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/9988135> ;
-  rdfs:subClassOf :MPO_04096 ;
-  skos:altLabel "11-methylene-18-dimethyl-ubiquinone-6"@en ;
-  skos:prefLabel "MDMQ-6"@en ;
-.
-:MPO_04098
-  a owl:Class ;
-  rdfs:label "TPQ"@en ;
-  rdfs:subClassOf :MPO_04060 ;
-  skos:altLabel "Thermoplasma quinone"@en ;
-  skos:prefLabel "TPQ"@en ;
-.
-:MPO_04099
-  a owl:Class ;
-  rdfs:label "TPQ-6"@en ;
-  rdfs:subClassOf :MPO_04098 ;
-  skos:altLabel "Thermoplasma quinone-6"@en ;
-  skos:prefLabel "TPQ-6"@en ;
-.
-:MPO_04100
-  a owl:Class ;
-  rdfs:label "TPQ-7"@en ;
-  rdfs:subClassOf :MPO_04098 ;
-  skos:altLabel "Thermoplasma quinone-7"@en ;
-  skos:prefLabel "TPQ-7"@en ;
-.
-:MPO_04101
-  a owl:Class ;
-  rdfs:label "MK-5(H2)"@en ;
-  rdfs:subClassOf :MPO_04062 ;
-  skos:altLabel "Menaquinone-5(H2)"@en ;
-  skos:prefLabel "MK-5(H2)"@en ;
-.
-:MPO_04102
-  a owl:Class ;
-  rdfs:label "MK-6(H2)"@en ;
-  rdfs:subClassOf :MPO_04063 ;
-  skos:altLabel "Menaquinone-6(H2)"@en ;
-  skos:prefLabel "MK-6(H2)"@en ;
-.
-:MPO_04103
-  a owl:Class ;
-  rdfs:label "MK-8(H2)"@en ;
-  rdfs:subClassOf :MPO_04065 ;
-  skos:altLabel "Menaquinone-8(H2)"@en ;
-  skos:prefLabel "MK-8(H2)"@en ;
-.
-:MPO_04104
-  a owl:Class ;
-  rdfs:label "MK-8(H4)"@en ;
-  rdfs:subClassOf :MPO_04065 ;
-  skos:altLabel "Menaquinone-8(H4)"@en ;
-  skos:prefLabel "MK-8(H4)"@en ;
-.
-:MPO_04105
-  a owl:Class ;
-  rdfs:label "MK-9(H0)"@en ;
-  rdfs:subClassOf :MPO_04066 ;
-  skos:altLabel "Menaquinone-9(H0)"@en ;
-  skos:prefLabel "MK-9(H0)"@en ;
-.
-:MPO_04106
-  a owl:Class ;
-  rdfs:label "MK-9(H2)"@en ;
-  rdfs:subClassOf :MPO_04066 ;
-  skos:altLabel "Menaquinone-9(H2)"@en ;
-  skos:prefLabel "MK-9(H2)"@en ;
-.
-:MPO_04107
-  a owl:Class ;
-  rdfs:label "MK-9(H4)"@en ;
-  rdfs:subClassOf :MPO_04066 ;
-  skos:altLabel "Menaquinone-9(H4)"@en ;
-  skos:prefLabel "MK-9(H4)"@en ;
-.
-:MPO_04108
-  a owl:Class ;
-  rdfs:label "MK-9(H6)"@en ;
-  rdfs:subClassOf :MPO_04066 ;
-  skos:altLabel "Menaquinone-9(H6)"@en ;
-  skos:prefLabel "MK-9(H6)"@en ;
-.
-:MPO_04109
-  a owl:Class ;
-  rdfs:label "MK-9(H8)"@en ;
-  rdfs:subClassOf :MPO_04066 ;
-  skos:altLabel "Menaquinone-9(H8)"@en ;
-  skos:prefLabel "MK-9(H8)"@en ;
-.
-:MPO_04110
-  a owl:Class ;
-  rdfs:label "MK-10(H4)"@en ;
-  rdfs:subClassOf :MPO_04067 ;
-  skos:altLabel "Menaquinone-10(H4)"@en ;
-  skos:prefLabel "MK-10(H4)"@en ;
-.
-:MPO_04111
-  a owl:Class ;
-  rdfs:label "MK-10(H6)"@en ;
-  rdfs:subClassOf :MPO_04067 ;
-  skos:altLabel "Menaquinone-10(H6)"@en ;
-  skos:prefLabel "MK-10(H6)"@en ;
-.
-:MPO_04112
-  a owl:Class ;
-  rdfs:label "MK-10(H8)"@en ;
-  rdfs:subClassOf :MPO_04067 ;
-  skos:altLabel "Menaquinone-10(H8)"@en ;
-  skos:prefLabel "MK-10(H8)"@en ;
-.
-:MPO_04113
-  a owl:Class ;
-  rdfs:label "MK-11(H6)"@en ;
-  rdfs:subClassOf :MPO_04068 ;
-  skos:altLabel "Menaquinone-11(H6)"@en ;
-  skos:prefLabel "MK-11(H6)"@en ;
-.
-:MPO_04114
-  a owl:Class ;
-  rdfs:label "MTK-7(H2)"@en ;
-  rdfs:subClassOf :MPO_04080 ;
-  skos:altLabel "Methionaquinone-7(H2)"@en ;
-  skos:prefLabel "MTK-7(H2)"@en ;
-.
-:MPO_04115
-  a owl:Class ;
-  rdfs:label "MTK-7(H4)"@en ;
-  rdfs:subClassOf :MPO_04080 ;
-  skos:altLabel "Methionaquinone-7(H4)"@en ;
-  skos:prefLabel "MTK-7(H4)"@en ;
-.
-:MPO_04116
-  a owl:Class ;
-  rdfs:label "TMK"@en ;
-  rdfs:subClassOf :MPO_04060 ;
-  skos:prefLabel "TMK"@en ;
-.
-:MPO_04117
-  a owl:Class ;
-  rdfs:label "TMK-6"@en ;
-  rdfs:subClassOf :MPO_04116 ;
-  skos:prefLabel "TMK-6"@en ;
-.
-:MPO_04118
-  a owl:Class ;
-  rdfs:label "RQ"@en ;
-  rdfs:subClassOf :MPO_04059 ;
-  skos:prefLabel "RQ"@en ;
-.
-:MPO_04119
-  a owl:Class ;
-  rdfs:label "RQ-8"@en ;
-  rdfs:subClassOf :MPO_04118 ;
-  skos:altLabel "Rhodoquinone-8"@en ;
-  skos:prefLabel "RQ-8"@en ;
-.
-:MPO_04120
-  a owl:Class ;
-  rdfs:label "RQ-10"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/6441300> ;
-  rdfs:subClassOf :MPO_04118 ;
-  skos:altLabel "Rhodoquinone-10"@en ;
-  skos:prefLabel "RQ-10"@en ;
-.
-:MPO_04121
-  a owl:Class ;
-  rdfs:label "MK-10(H2)"@en ;
-  rdfs:subClassOf :MPO_04067 ;
-  skos:altLabel "Menaquinone-10(H2)"@en ;
-  skos:prefLabel "MK-10(H2)"@en ;
-.
-:MPO_04122
-  a owl:Class ;
-  rdfs:label "MK-10(H0)"@en ;
-  rdfs:subClassOf :MPO_04067 ;
-  skos:altLabel "Menaquinone-10(H0)"@en ;
-  skos:prefLabel "MK-10(H0)"@en ;
-.
-:MPO_04123
-  a owl:Class ;
-  rdfs:label "MK-11(H4)"@en ;
-  rdfs:subClassOf :MPO_04068 ;
-  skos:altLabel "Menaquinone-11(H4)"@en ;
-  skos:prefLabel "MK-11(H4)"@en ;
-.
-:MPO_04124
-  a owl:Class ;
-  rdfs:label "MK-11(H2)"@en ;
-  rdfs:subClassOf :MPO_04068 ;
-  skos:altLabel "Menaquinone-11(H2)"@en ;
-  skos:prefLabel "MK-11(H2)"@en ;
-.
-:MPO_04125
-  a owl:Class ;
-  rdfs:label "MK-4(H6)"@en ;
-  rdfs:subClassOf :MPO_04061 ;
-  skos:altLabel "Menaquinone-4(H6)"@en ;
-  skos:prefLabel "MK-4(H6)"@en ;
-.
-:MPO_04126
-  a owl:Class ;
-  rdfs:label "MK-4(H8)"@en ;
-  rdfs:subClassOf :MPO_04061 ;
-  skos:prefLabel "MK-4(H8)"@en ;
-.
-:MPO_04127
-  a owl:Class ;
-  rdfs:label "MK-5(H8)"@en ;
-  rdfs:subClassOf :MPO_04062 ;
-  skos:altLabel "Menaquinone-5(H8)"@en ;
-  skos:prefLabel "MK-5(H8)"@en ;
-.
-:MPO_04128
-  a owl:Class ;
-  rdfs:label "MK-5(H10)"@en ;
-  rdfs:subClassOf :MPO_04062 ;
-  skos:altLabel "Menaquinone-5(H10)"@en ;
-  skos:prefLabel "MK-5(H10)"@en ;
-.
-:MPO_04129
-  a owl:Class ;
-  rdfs:label "MK-6(H4)"@en ;
-  rdfs:subClassOf :MPO_04063 ;
-  skos:altLabel "Menaquinone-6(H4)"@en ;
-  skos:prefLabel "MK-6(H4)"@en ;
-.
-:MPO_04130
-  a owl:Class ;
-  rdfs:label "MK-6(H8)"@en ;
-  rdfs:subClassOf :MPO_04063 ;
-  skos:altLabel "Menaquinone-6(H8)"@en ;
-  skos:prefLabel "MK-6(H8)"@en ;
-.
-:MPO_04131
-  a owl:Class ;
-  rdfs:label "MK-6(H10)"@en ;
-  rdfs:subClassOf :MPO_04063 ;
-  skos:altLabel "Menaquinone-6(H10)"@en ;
-  skos:prefLabel "MK-6(H10)"@en ;
-.
-:MPO_04132
-  a owl:Class ;
-  rdfs:label "MK-7(H0)"@en ;
-  rdfs:subClassOf :MPO_04064 ;
-  skos:altLabel "Menaquinone-7(H0)"@en ;
-  skos:prefLabel "MK-7(H0)"@en ;
-.
-:MPO_04133
-  a owl:Class ;
-  rdfs:label "MK-7(H2)"@en ;
-  rdfs:subClassOf :MPO_04064 ;
-  skos:altLabel "Menaquinone-7(H2)"@en ;
-  skos:prefLabel "MK-7(H2)"@en ;
-.
-:MPO_04134
-  a owl:Class ;
-  rdfs:label "MK-7(H4)"@en ;
-  rdfs:subClassOf :MPO_04064 ;
-  skos:altLabel "Menaquinone-7(H4)"@en ;
-  skos:prefLabel "MK-7(H4)"@en ;
-.
-:MPO_04135
-  a owl:Class ;
-  rdfs:label "MK-7(H14)"@en ;
-  rdfs:subClassOf :MPO_04064 ;
-  skos:altLabel "Menaquinone-7(H14)"@en ;
-  skos:prefLabel "MK-7(H14)"@en ;
-.
-:MPO_04136
-  a owl:Class ;
-  rdfs:label "MK-8(H6)"@en ;
-  rdfs:subClassOf :MPO_04065 ;
-  skos:altLabel "Menaquinone-8(H6)"@en ;
-  skos:prefLabel "MK-8(H6)"@en ;
-.
-:MPO_04137
-  a owl:Class ;
-  rdfs:label "MK-9(H10)"@en ;
-  rdfs:subClassOf :MPO_04066 ;
-  skos:prefLabel "MK-9(H10)"@en ;
-.
-:MPO_04138
-  a owl:Class ;
-  rdfs:label "MMK"@en ;
-  rdfs:subClassOf :MPO_04060 ;
-  skos:altLabel "Methylmenaquinone"@en ;
-  skos:prefLabel "MMK"@en ;
-.
-:MPO_04139
-  a owl:Class ;
-  rdfs:label "MMK-5"@en ;
-  rdfs:subClassOf :MPO_04138 ;
-  skos:altLabel "Methylmenaquinone-5"@en ;
-  skos:prefLabel "MMK-5"@en ;
-.
-:MPO_04140
-  a owl:Class ;
-  rdfs:label "MMK-6"@en ;
-  rdfs:subClassOf :MPO_04138 ;
-  skos:altLabel "Methylmenaquinone-6"@en ;
-  skos:prefLabel "MMK-6"@en ;
-.
-:MPO_04141
-  a owl:Class ;
-  rdfs:label "MMK-7"@en ;
-  rdfs:subClassOf :MPO_04138 ;
-  skos:altLabel "Methylmenaquinone-7"@en ;
-  skos:prefLabel "MMK-7"@en ;
-.
-:MPO_04142
-  a owl:Class ;
-  rdfs:label "MMK-8"@en ;
-  rdfs:subClassOf :MPO_04138 ;
-  skos:altLabel "Methylmenaquinone-8"@en ;
-  skos:prefLabel "MMK-8"@en ;
-.
-:MPO_04143
-  a owl:Class ;
-  rdfs:label "MMK-5(H10)"@en ;
-  rdfs:subClassOf :MPO_04139 ;
-  skos:altLabel "Methylmenaquinone-5(H10)"@en ;
-  skos:prefLabel "MMK-5(H10)"@en ;
-.
-:MPO_04144
-  a owl:Class ;
-  rdfs:label "MMK-6(H12)"@en ;
-  rdfs:subClassOf :MPO_04140 ;
-  skos:altLabel "Methylmenaquinone-6(H12)"@en ;
-  skos:prefLabel "MMK-6(H12)"@en ;
-.
-:MPO_04145
-  a owl:Class ;
-  rdfs:label "MTK-6"@en ;
-  rdfs:subClassOf :MPO_04079 ;
-  skos:altLabel "Methylmenaquinone-6"@en ;
-  skos:prefLabel "MTK-6"@en ;
-.
-:MPO_04146
-  a owl:Class ;
-  rdfs:label "Q-10(H2)"@en ;
-  rdfs:subClassOf :MPO_04088 ;
-  skos:altLabel "Ubiquinone-10(H2)"@en ;
-  skos:prefLabel "Q-10(H2)"@en ;
-.
-:MPO_04147
-  a owl:Class ;
-  rdfs:label "Q-10(H4)"@en ;
-  rdfs:subClassOf :MPO_04088 ;
-  skos:altLabel "Ubiquinone-10(H4)"@en ;
-  skos:prefLabel "Q-10(H4)"@en ;
-.
-:MPO_04148
-  a owl:Class ;
-  rdfs:label "SQ"@en ;
-  rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/17267967> ;
-  rdfs:subClassOf :MPO_04060 ;
-  skos:altLabel "Smaragdiquinone"@en ;
-  skos:prefLabel "SQ"@en ;
-.
-:MPO_04149
-  a owl:Class ;
-  rdfs:label "SQA-8"@en ;
-  rdfs:subClassOf :MPO_04148 ;
-  skos:altLabel "Smaragdiquinone A-8"@en ;
-  skos:prefLabel "SQA-8"@en ;
-.
-:MPO_04150
-  a owl:Class ;
-  rdfs:label "SQB-8"@en ;
-  rdfs:subClassOf :MPO_04148 ;
-  skos:altLabel "Smaragdiquinone B-8"@en ;
-  skos:prefLabel "SQB-8"@en ;
-.
-:MPO_04151
-  a owl:Class ;
-  rdfs:label "Organoheterotrophic"@en ;
-  rdfs:subClassOf :MPO_04017 ;
-  skos:altLabel "Organoheterotroph"@en ;
-  skos:prefLabel "Organoheterotrophic"@en ;
-.
-:MPO_04152
-  a owl:Class ;
-  rdfs:label "Obligate chemolithoautotrophic"@en ;
-  rdfs:label "偏性独立栄養化学合成性"@ja ;
-  rdfs:subClassOf :MPO_04040 ;
-  skos:altLabel "Obligate chemoautolithotroph"@en ;
-  skos:altLabel "Obligate chemolithoautotroph"@en ;
-  skos:altLabel "偏性独立栄養化学合成細菌"@ja ;
-  skos:prefLabel "Obligate chemolithoautotroph"@en ;
-.
-:MPO_05000
-  a owl:Class ;
-  rdfs:label "Development"@en ;
-  rdfs:subClassOf :MPO_00000 ;
-  skos:prefLabel "Development"@en ;
-.
-:MPO_05001
-  a owl:Class ;
-  rdfs:label "Resting spore forming"@en ;
-  rdfs:label "休眠胞子形成"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Akinete> ;
-  rdfs:subClassOf :MPO_05000 ;
-  skos:altLabel "Akinete forming"@en ;
-  skos:altLabel "アキネート形成"@ja ;
-  skos:prefLabel "Resting spore forming"@en ;
-.
-:MPO_05002
-  a owl:Class ;
-  rdfs:label "Hetelocyst forming"@en ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Heterocyst> ;
-  rdfs:subClassOf :MPO_05000 ;
-  skos:prefLabel "Hetelocyst forming"@en ;
-.
-:MPO_06000
-  a owl:Class ;
-  rdfs:label "Serotype"@en ;
-  rdfs:subClassOf :MPO_00000 ;
-  skos:prefLabel "Serotype"@en ;
-.
-:MPO_07000
-  a owl:Class ;
-  rdfs:label "Staining"@en ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Staining> ;
-  rdfs:subClassOf :MPO_00000 ;
-  skos:altLabel "Cell staining"@en ;
-  skos:altLabel "細胞染色"@ja ;
-  skos:prefLabel "Staining"@en ;
-.
-:MPO_07001
-  a owl:Class ;
-  rdfs:label "Gram stain"@en ;
-  rdfs:label "グラム染色"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Gram_staining> ;
-  rdfs:subClassOf :MPO_07000 ;
-  skos:prefLabel "Gram stain"@en ;
-.
-:MPO_07002
-  a owl:Class ;
-  rdfs:label "Gram positive"@en ;
-  rdfs:label "グラム陽性"@ja ;
-  rdfs:subClassOf :MPO_07001 ;
-  skos:altLabel "Gram+"@en ;
-  skos:prefLabel "Gram positive"@en ;
-.
-:MPO_07003
-  a owl:Class ;
-  rdfs:label "Gram negative"@en ;
-  rdfs:label "グラム陰性"@ja ;
-  rdfs:subClassOf :MPO_07001 ;
-  skos:altLabel "Gram-"@en ;
-  skos:prefLabel "Gram negative"@en ;
-.
-:MPO_07004
-  a owl:Class ;
-  rdfs:label "Gram variable"@en ;
-  rdfs:subClassOf :MPO_07001 ;
-  skos:prefLabel "Gram variable"@en ;
-.
-:MPO_07005
-  a owl:Class ;
-  rdfs:label "Ziehl–Neelsen stain"@en ;
-  rdfs:label "抗酸染色"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Ziehl-Neelsen_stain> ;
-  rdfs:subClassOf :MPO_07000 ;
-  skos:altLabel "acid-fast stain"@en ;
-  skos:prefLabel "Ziehl–Neelsen stain"@en ;
-.
-:MPO_08000
-  a owl:Class ;
-  rdfs:label "Cell accumulation"@en ;
-  rdfs:subClassOf :MPO_00000 ;
-  skos:prefLabel "Cell accumulation"@en ;
-.
-:MPO_08001
-  a owl:Class ;
-  rdfs:label "Algae bloom"@en ;
-  rdfs:label "水の華"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Algal_bloom> ;
-  rdfs:subClassOf :MPO_08000 ;
-  skos:prefLabel "Algae bloom"@en ;
-.
-:MPO_08002
-  a owl:Class ;
-  rdfs:label "Red tide"@en ;
-  rdfs:label "赤潮"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Red_tide> ;
-  rdfs:subClassOf :MPO_08001 ;
-  skos:prefLabel "Red tide"@en ;
-.
-:MPO_08003
-  a owl:Class ;
-  rdfs:label "Cyanobacterial water bloom"@en ;
-  rdfs:label "アオコ"@ja ;
-  rdfs:subClassOf :MPO_08001 ;
-  skos:prefLabel "Cyanobacterial water bloom"@en ;
-.
-:MPO_09000
-  a owl:Class ;
-  rdfs:label "Way of life"@en ;
-  rdfs:subClassOf :MPO_00000 ;
-  skos:prefLabel "Way of life"@en ;
-.
-:MPO_09001
-  a owl:Class ;
-  rdfs:label "Planktonic"@en ;
-  rdfs:subClassOf :MPO_09000 ;
-  skos:prefLabel "Planktonic"@en ;
-.
-:MPO_09002
-  a owl:Class ;
-  rdfs:label "Benthic"@en ;
-  rdfs:subClassOf :MPO_09000 ;
-  skos:prefLabel "Benthic"@en ;
-.
-:MPO_09003
-  a owl:Class ;
-  rdfs:label "Epilithic"@en ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Epilithic> ;
-  rdfs:subClassOf :MPO_09000 ;
-  skos:altLabel "Lithophyte"@en ;
-  skos:prefLabel "Epilithic"@en ;
-.
-:MPO_09004
-  a owl:Class ;
-  rdfs:label "Aerial"@en ;
-  rdfs:subClassOf :MPO_09000 ;
-  skos:prefLabel "Aerial"@en ;
-.
-:MPO_10000
-  a owl:ObjectProperty ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "has phenotypes"@en ;
-  rdfs:range :MPO_00000 ;
-  skos:prefLabel "has phenotypes"@en ;
-.
-:MPO_10001
-  a owl:ObjectProperty ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "has cell shape"@en ;
-  rdfs:range :MPO_01001 ;
-  rdfs:subPropertyOf :MPO_10000 ;
-  skos:prefLabel "has cell shape"@en ;
-.
-:MPO_10002
-  a owl:ObjectProperty ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "oxygen requirement"@en ;
-  rdfs:range :MPO_04001 ;
-  rdfs:subPropertyOf :MPO_10000 ;
-  skos:prefLabel "oxygen requirement"@en ;
-.
-:MPO_10003
-  a owl:ObjectProperty ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "temperature range"@en ;
-  rdfs:range :MPO_03013 ;
-  rdfs:subPropertyOf :MPO_10000 ;
-  skos:prefLabel "temperature range"@en ;
-.
-:MPO_10004
-  a owl:DatatypeProperty ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "growth pH"@en ;
-  rdfs:range xsd:decimal ;
-  rdfs:subPropertyOf :MPO_10000 ;
-  skos:prefLabel "growth pH"@en ;
-.
-:MPO_10005
-  a owl:DatatypeProperty ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "optimal growth pH"@en ;
-  rdfs:range xsd:decimal ;
-  rdfs:subPropertyOf :MPO_10004 ;
-  skos:prefLabel "optimal growth pH"@en ;
-.
-:MPO_10006
-  a owl:DatatypeProperty ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "minimum growth pH"@en ;
-  rdfs:range xsd:decimal ;
-  rdfs:subPropertyOf :MPO_10004 ;
-  skos:prefLabel "minimum growth pH"@en ;
-.
-:MPO_10007
-  a owl:DatatypeProperty ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "maximum growth pH"@en ;
-  rdfs:range xsd:decimal ;
-  rdfs:subPropertyOf :MPO_10004 ;
-  skos:prefLabel "maximum growth pH"@en ;
-.
-:MPO_10008
-  a owl:DatatypeProperty ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "growth temperature"@en ;
-  rdfs:range xsd:decimal ;
-  rdfs:subPropertyOf :MPO_10000 ;
-  skos:prefLabel "growth temperature"@en ;
-.
-:MPO_10009
-  a owl:DatatypeProperty ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "optimal growth temperature"@en ;
-  rdfs:range xsd:decimal ;
-  rdfs:subPropertyOf :MPO_10008 ;
-  skos:prefLabel "optimal growth temperature"@en ;
-.
-:MPO_10010
-  a owl:DatatypeProperty ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "minimum growth temperature"@en ;
-  rdfs:range xsd:decimal ;
-  rdfs:subPropertyOf :MPO_10008 ;
-  skos:prefLabel "minimum growth temperature"@en ;
-.
-:MPO_10011
-  a owl:DatatypeProperty ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "maximum growth temperature"@en ;
-  rdfs:range xsd:decimal ;
-  rdfs:subPropertyOf :MPO_10008 ;
-  skos:prefLabel "maximum growth temperature"@en ;
-.
-:MPO_10012
-  a owl:ObjectProperty ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "pH preference"@en ;
-  rdfs:range :MPO_03009 ;
-  rdfs:subPropertyOf :MPO_10000 ;
-  skos:prefLabel "pH preference"@en ;
-.
-:MPO_10013
-  a owl:ObjectProperty ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "has motility"@en ;
-  rdfs:range :MPO_02000 ;
-  rdfs:subPropertyOf :MPO_10000 ;
-  skos:prefLabel "has motility"@en ;
-.
-:MPO_10014
-  a owl:ObjectProperty ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "salinity preference"@en ;
-  rdfs:subPropertyOf :MPO_10000 ;
-  skos:prefLabel "salinity preference"@en ;
-.
-:MPO_10016
-  a owl:ObjectProperty ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "has cell arrangement"@en ;
-  rdfs:range :MPO_01030 ;
-  rdfs:subPropertyOf :MPO_10000 ;
-  skos:prefLabel "has cell arrangement"@en ;
-.
-:MPO_10017
-  a rdf:Property ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "produce quinones "@en ;
-  rdfs:range :MPO_04058 ;
-  rdfs:subPropertyOf :MPO_10000 ;
-  skos:prefLabel "produce quinones "@en ;
-.
-:MPO_10018
-  a rdf:Property ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "produce antibiotics"@en ;
-  rdfs:range rdfs:Resource ;
-  rdfs:subPropertyOf :MPO_10000 ;
-  skos:prefLabel "produce antibiotics"@en ;
-.
-:MPO_10019
-  a owl:ObjectProperty ;
-  rdfs:label "representative morphology"@en ;
-  rdfs:subPropertyOf :MPO_10000 ;
-  skos:prefLabel "representative morphology"@en ;
-.
-:MPO_10020
-  a owl:DatatypeProperty ;
-  rdfs:label "minimum optimal growth temperature"@en ;
-  rdfs:subPropertyOf :MPO_10009 ;
-  skos:prefLabel "minimum optimal growth temperature"@en ;
-.
-:MPO_10021
-  a owl:DatatypeProperty ;
-  rdfs:label "maximum optimal growth temperature"@en ;
-  rdfs:subPropertyOf :MPO_10009 ;
-  skos:prefLabel "maximum optimal growth temperature"@en ;
-.
-:MPO_10022
-  a owl:DatatypeProperty ;
-  rdfs:label "minimum optimal growth ph"@en ;
-  rdfs:subPropertyOf :MPO_10005 ;
-  skos:prefLabel "minimum optimal growth ph"@en ;
-.
-:MPO_10023
-  a owl:DatatypeProperty ;
-  rdfs:label "maximum optimal growth ph"@en ;
-  rdfs:subPropertyOf :MPO_10005 ;
-  skos:prefLabel "maximum optimal growth ph"@en ;
-.
-:MPO_10024
-  a owl:ObjectProperty ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "staining"@en ;
-  rdfs:range :MPO_07000 ;
-  rdfs:subPropertyOf :MPO_10000 ;
-  skos:prefLabel "staining"@en ;
-.
-:MPO_10025
-  a owl:ObjectProperty ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "evergy source"@en ;
-  rdfs:range :MPO_04010 ;
-  rdfs:subPropertyOf :MPO_10000 ;
-  skos:prefLabel "energy source"@en ;
-.
-:MPO_10026
-  a owl:ObjectProperty ;
-  rdfs:label "has morphology"@en ;
-  rdfs:subPropertyOf :MPO_10000 ;
-  skos:prefLabel "has morphology"@en ;
-.
-:MPO_10027
-  a owl:ObjectProperty ;
-  rdfs:domain rdfs:Resource ;
-  rdfs:label "primary nutritional groups"@en ;
-  rdfs:range :MPO_04010 ;
-  rdfs:subPropertyOf :MPO_10000 ;
-  skos:prefLabel "primary nutritional groups"@en ;
-.
-:MPO_10028
-  a owl:DatatypeProperty ;
-  rdfs:label "growth salinity"@en ;
-  rdfs:subPropertyOf :MPO_10000 ;
-  skos:prefLabel "growth salinity"@en ;
-.
-:MPO_10029
-  a owl:DatatypeProperty ;
-  rdfs:label "maximal growth salinity"@en ;
-  rdfs:subPropertyOf :MPO_10028 ;
-  skos:prefLabel "maximal growth salinity"@en ;
-.
-:MPO_10030
-  a owl:DatatypeProperty ;
-  rdfs:label "minimum growth salinity"@en ;
-  rdfs:subPropertyOf :MPO_10028 ;
-  skos:prefLabel "minimum growth salinity"@en ;
-.
-:MPO_10031
-  a owl:DatatypeProperty ;
-  rdfs:label "optimal growth salinity"@en ;
-  rdfs:subPropertyOf :MPO_10028 ;
-  skos:prefLabel "optimal growth salinity"@en ;
-.
-:MPO_10032
-  a owl:DatatypeProperty ;
-  rdfs:label "maximum optimal growth salinity"@en ;
-  rdfs:subPropertyOf :MPO_10031 ;
-  skos:prefLabel "maximum optimal growth salinity"@en ;
-.
-:MPO_10033
-  a owl:DatatypeProperty ;
-  rdfs:label "minimum optimal growth salinity"@en ;
-  rdfs:subPropertyOf :MPO_10031 ;
-  skos:prefLabel "minimum optimal growth salinity"@en ;
-.
-:MPO_10034
-  a rdf:Property ;
-  rdfs:label "is inhabited by"@en ;
-  skos:prefLabel "is inhabited by"@en ;
-.
-:MPO_11000
-  a owl:Class ;
-  rdfs:label "Sexual reproduction"@en ;
-  rdfs:subClassOf :MPO_00000 ;
-  skos:prefLabel "Sexual reproduction"@en ;
-.
-:MPO_11001
-  a owl:Class ;
-  rdfs:label "Heterothallic"@en ;
-  rdfs:label "自家不和合性"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Heterothallic> ;
-  rdfs:subClassOf :MPO_11000 ;
-  skos:prefLabel "Heterothallic"@en ;
-.
-:MPO_11002
-  a owl:Class ;
-  rdfs:label "Homothallic"@en ;
-  rdfs:label "自家和合性"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Homothallic> ;
-  rdfs:subClassOf :MPO_11000 ;
-  skos:prefLabel "Homothallic"@en ;
-.
-:MPO_11003
-  a owl:Class ;
-  rdfs:label "Isogamy"@en ;
-  rdfs:label "同形配偶"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Isogamy> ;
-  rdfs:subClassOf :MPO_11000 ;
-  skos:prefLabel "Isogamy"@en ;
-.
-:MPO_11004
-  a owl:Class ;
-  rdfs:label "Anisogamy"@en ;
-  rdfs:label "異型配偶"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Anisogamy> ;
-  rdfs:subClassOf :MPO_11000 ;
-  skos:altLabel "Heterogamy"@en ;
-  skos:prefLabel "Anisogamy"@en ;
-.
-:MPO_11005
-  a owl:Class ;
-  rdfs:label "Dioecious"@en ;
-  rdfs:label "雌雄異体の"@ja ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Dioecy> ;
-  rdfs:subClassOf :MPO_11000 ;
-  skos:prefLabel "Dioecious"@en ;
-.
-:MPO_11006
-  a owl:Class ;
-  rdfs:label "Monoecious"@en ;
-  rdfs:seeAlso <http://en.wikipedia.org/wiki/Monoecious> ;
-  rdfs:subClassOf :MPO_11000 ;
-  skos:prefLabel "Monoecious"@en ;
-.
-:testProperty
-  a owl:DatatypeProperty ;
-  rdfs:label "testProperty"@en ;
-  rdfs:range xsd:boolean ;
-  skos:prefLabel "testProperty"@en ;
-.
-<http://semanticscience.org/resource/SIO_000319>
-  a owl:Thing ;
-.
-<http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
-  a owl:Thing ;
-.
+<http://purl.jp/bio/10/mpo> rdf:type owl:Ontology ;
+                             owl:imports <http://semanticscience.org/ontology/sio.owl> ,
+                                         <http://www.w3.org/2002/07/owl> ,
+                                         <http://www.w3.org/2004/02/skos/core> ;
+                             dc:language "English" ,
+                                         "Japanese" ;
+                             dcterms:contributor "Erick Antezana" ,
+                                                 "Shinobu Okamoto" ;
+                             dcterms:creator "Shuichi Kawashima" ;
+                             dcterms:title "MPO: Microbial Phonotye Ontology" ;
+                             rdfs:comment "version 0.76"@en ;
+                             skos:definition "An ontology for describing microbial phenotypes" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/date
+dc:date rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/language
+dc:language rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/identifier
+dcterms:identifier rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/instructionalMethod
+dcterms:instructionalMethod rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#alt
+<http://www.w3.org/2003/01/geo/wgs84_pos#alt> rdfs:comment """The WGS84 altitude of a SpatialThing (decimal meters 
+above the local reference ellipsoid).""" ;
+                                              rdfs:label "altitude" ;
+                                              rdf:type owl:AnnotationProperty ;
+                                              rdfs:domain <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#lat
+<http://www.w3.org/2003/01/geo/wgs84_pos#lat> rdfs:comment "The WGS84 latitude of a SpatialThing (decimal degrees)." ;
+                                              rdfs:label "latitude" ;
+                                              rdf:type owl:AnnotationProperty ;
+                                              rdfs:domain <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#location
+<http://www.w3.org/2003/01/geo/wgs84_pos#location> rdf:type owl:AnnotationProperty ;
+                                                   rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/based_near> .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#long
+<http://www.w3.org/2003/01/geo/wgs84_pos#long> rdfs:comment "The WGS84 longitude of a SpatialThing (decimal degrees)." ;
+                                               rdfs:label "longitude" ;
+                                               rdf:type owl:AnnotationProperty ;
+                                               rdfs:domain <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> .
+
+
+###  http://xmlns.com/foaf/0.1/based_near
+<http://xmlns.com/foaf/0.1/based_near> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.jp/bio/10/mpo#MPO_03006
+:MPO_03006 rdf:type owl:ObjectProperty ;
+           rdfs:range :MPO_03006 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10000
+:MPO_10000 rdf:type owl:ObjectProperty ;
+           rdfs:domain rdfs:Resource ;
+           rdfs:range :MPO_00000 ;
+           rdfs:label "has phenotypes"@en ;
+           skos:prefLabel "has phenotypes"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10001
+:MPO_10001 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10000 ;
+           rdfs:domain rdfs:Resource ;
+           rdfs:range :MPO_01001 ;
+           rdfs:label "has cell shape"@en ;
+           skos:prefLabel "has cell shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10002
+:MPO_10002 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10000 ;
+           rdfs:domain rdfs:Resource ;
+           rdfs:range :MPO_04001 ;
+           rdfs:label "oxygen requirement"@en ;
+           skos:prefLabel "oxygen requirement"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10003
+:MPO_10003 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10000 ;
+           rdfs:domain rdfs:Resource ;
+           rdfs:range :MPO_03013 ;
+           rdfs:label "temperature range"@en ;
+           skos:prefLabel "temperature range"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10004
+:MPO_10004 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10000 ;
+           rdfs:domain rdfs:Resource .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10005
+:MPO_10005 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10004 ;
+           rdfs:domain rdfs:Resource .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10006
+:MPO_10006 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10004 ;
+           rdfs:domain rdfs:Resource .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10007
+:MPO_10007 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10004 ;
+           rdfs:domain rdfs:Resource .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10008
+:MPO_10008 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10000 ;
+           rdfs:domain rdfs:Resource .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10009
+:MPO_10009 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10008 ;
+           rdfs:domain rdfs:Resource .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10010
+:MPO_10010 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10008 ;
+           rdfs:domain rdfs:Resource .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10011
+:MPO_10011 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10008 ;
+           rdfs:domain rdfs:Resource .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10012
+:MPO_10012 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10000 ;
+           rdfs:domain rdfs:Resource ;
+           rdfs:range :MPO_03009 ;
+           rdfs:label "pH preference"@en ;
+           skos:prefLabel "pH preference"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10013
+:MPO_10013 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10000 ;
+           rdfs:domain rdfs:Resource ;
+           rdfs:range :MPO_02000 ;
+           rdfs:label "has motility"@en ;
+           skos:prefLabel "has motility"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10014
+:MPO_10014 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10000 ;
+           rdfs:domain rdfs:Resource ;
+           rdfs:label "salinity preference"@en ;
+           skos:prefLabel "salinity preference"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10016
+:MPO_10016 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10000 ;
+           rdfs:domain rdfs:Resource ;
+           rdfs:range :MPO_01030 ;
+           rdfs:label "has cell arrangement"@en ;
+           skos:prefLabel "has cell arrangement"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10017
+:MPO_10017 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10000 ;
+           rdfs:domain rdfs:Resource ;
+           rdfs:range :MPO_04058 ;
+           rdfs:label "produce quinones "@en ;
+           skos:prefLabel "produce quinones "@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10018
+:MPO_10018 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10000 ;
+           rdfs:domain rdfs:Resource ;
+           rdfs:range rdfs:Resource ;
+           rdfs:label "produce antibiotics"@en ;
+           skos:prefLabel "produce antibiotics"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10019
+:MPO_10019 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10000 ;
+           rdfs:label "representative morphology"@en ;
+           skos:prefLabel "representative morphology"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10020
+:MPO_10020 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10009 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10021
+:MPO_10021 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10009 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10022
+:MPO_10022 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10005 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10023
+:MPO_10023 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10005 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10024
+:MPO_10024 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10000 ;
+           rdfs:domain rdfs:Resource ;
+           rdfs:range :MPO_07000 ;
+           rdfs:label "staining"@en ;
+           skos:prefLabel "staining"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10025
+:MPO_10025 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10000 ;
+           rdfs:domain rdfs:Resource ;
+           rdfs:range :MPO_04010 ;
+           rdfs:label "evergy source"@en ;
+           skos:prefLabel "energy source"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10026
+:MPO_10026 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10000 ;
+           rdfs:label "has morphology"@en ;
+           skos:prefLabel "has morphology"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10027
+:MPO_10027 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10000 ;
+           rdfs:domain rdfs:Resource ;
+           rdfs:range :MPO_04010 ;
+           rdfs:label "primary nutritional groups"@en ;
+           skos:prefLabel "primary nutritional groups"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10028
+:MPO_10028 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10000 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10029
+:MPO_10029 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10028 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10030
+:MPO_10030 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10028 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10031
+:MPO_10031 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10028 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10032
+:MPO_10032 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10031 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10033
+:MPO_10033 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :MPO_10031 .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#location
+<http://www.w3.org/2003/01/geo/wgs84_pos#location> rdf:type owl:ObjectProperty ;
+                                                   rdfs:range <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://purl.jp/bio/10/mpo#MPO_10004
+:MPO_10004 rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:decimal .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10005
+:MPO_10005 rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:decimal .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10006
+:MPO_10006 rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:decimal .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10007
+:MPO_10007 rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:decimal .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10008
+:MPO_10008 rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:decimal .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10009
+:MPO_10009 rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:decimal .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10010
+:MPO_10010 rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:decimal .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10011
+:MPO_10011 rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:decimal .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10020
+:MPO_10020 rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10021
+:MPO_10021 rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10022
+:MPO_10022 rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10023
+:MPO_10023 rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10028
+:MPO_10028 rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10029
+:MPO_10029 rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10030
+:MPO_10030 rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10031
+:MPO_10031 rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10032
+:MPO_10032 rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_10033
+:MPO_10033 rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.jp/bio/10/mpo#testProperty
+:testProperty rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:boolean ;
+              rdfs:label "testProperty"@en ;
+              skos:prefLabel "testProperty"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://org.semanticweb.owlapi/error#Error1
+<http://org.semanticweb.owlapi/error#Error1> rdf:type owl:Class .
+
+
+###  http://purl.jp/bio/10/gmo/MPO_00140
+<http://purl.jp/bio/10/gmo/MPO_00140> rdf:type owl:Class ;
+                                      rdfs:subClassOf :MPO_00126 ;
+                                      dcterms:identifier "MPO_00140" ;
+                                      rdfs:label "Diameter"@en ;
+                                      skos:prefLabel "Diameter"@en .
+
+
+###  http://purl.jp/bio/10/gmo/MPO_00141
+<http://purl.jp/bio/10/gmo/MPO_00141> rdf:type owl:Class ;
+                                      rdfs:subClassOf <http://purl.jp/bio/10/gmo/MPO_00140> ;
+                                      dcterms:identifier "MPO_00141" ;
+                                      rdfs:label "Minimum diameter"@en ;
+                                      skos:prefLabel "Maximum diameter"@en .
+
+
+###  http://purl.jp/bio/10/gmo/MPO_00142
+<http://purl.jp/bio/10/gmo/MPO_00142> rdf:type owl:Class ;
+                                      rdfs:subClassOf <http://purl.jp/bio/10/gmo/MPO_00140> ;
+                                      dcterms:identifier "MPO_00142" ;
+                                      rdfs:label "Maximum diameter"@en ;
+                                      skos:prefLabel "Maximum diameter"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00000
+:MPO_00000 rdf:type owl:Class ;
+           rdfs:label "Microbial phenotype"@en ;
+           skos:definition "A microbial phenotype is an observable characteristic of a microbe"@en ;
+           skos:prefLabel "Microbial phenotype"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00001
+:MPO_00001 rdf:type owl:Class ;
+           rdfs:label "Organism"@en ;
+           skos:prefLabel "Organism"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00010
+:MPO_00010 rdf:type owl:Class ;
+           dcterms:identifier "MPO_00010" ;
+           rdfs:label "Location"@en ;
+           skos:prefLabel "Location"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00011
+:MPO_00011 rdf:type owl:Class ;
+           rdfs:subClassOf <http://org.semanticweb.owlapi/error#Error1> ,
+                           :MPO_00010 ;
+           dcterms:identifier "MPO_00011" ;
+           rdfs:label "Sampling location"@en ;
+           skos:prefLabel "Sampling location"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00012
+:MPO_00012 rdf:type owl:Class ;
+           dcterms:identifier "MPO_00012" ;
+           rdfs:label "Habitat"@en ;
+           skos:prefLabel "Habitat"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00101
+:MPO_00101 rdf:type owl:Class ;
+           dcterms:identifier "MPO_00101" ;
+           rdfs:label "Growth temperature"@en ;
+           skos:prefLabel "Growth temperature"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00102
+:MPO_00102 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00101 ;
+           dcterms:identifier "MPO_00102" ;
+           rdfs:label "Optimal growth temperature"@en ;
+           skos:prefLabel "Optimal growth temperature"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00103
+:MPO_00103 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00101 ;
+           dcterms:identifier "MPO_00103" ;
+           rdfs:label "Maximum growth temperature"@en ;
+           skos:prefLabel "Maximum growth temperature"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00104
+:MPO_00104 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00101 ;
+           dcterms:identifier "MPO_00104" ;
+           rdfs:label "Minimum growth temperature"@en ;
+           skos:prefLabel "Minimum growth temperature"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00105
+:MPO_00105 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00102 ;
+           dcterms:identifier "MPO_00105" ;
+           rdfs:label "Maximum optimal growth temperature"@en ;
+           skos:prefLabel "Maximum optimal growth temperature"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00106
+:MPO_00106 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00102 ;
+           dcterms:identifier "MPO_00106" ;
+           dcterms:instructionalMethod :MPO_00106 ;
+           rdfs:label "Minimum optimal growth temperature"@en ;
+           skos:prefLabel "Minimum optimal growth temperature"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00107
+:MPO_00107 rdf:type owl:Class ;
+           dcterms:identifier "MPO_00107" ;
+           rdfs:label "Growth pH"@en ;
+           skos:definition "Growth pH"@en ;
+           skos:prefLabel "Growth pH"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00108
+:MPO_00108 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00107 ;
+           dcterms:identifier "MPO_00108" ;
+           rdfs:label "Optimal growth pH"@en ;
+           skos:definition "Optimal growth pH of a microbe"@en ;
+           skos:prefLabel "Optimal growth pH"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00109
+:MPO_00109 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00107 ;
+           dcterms:identifier "MPO_00109" ;
+           rdfs:label "Maximum growth pH"@en ;
+           skos:prefLabel "Maximum growth pH"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00110
+:MPO_00110 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00107 ;
+           dcterms:identifier "MPO_00110" ;
+           rdfs:label "Minimum growth pH"@en ;
+           skos:prefLabel "Minimum growth pH"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00111
+:MPO_00111 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00108 ;
+           dcterms:identifier "MPO_00111" ;
+           rdfs:label "Maximum optimal growth pH"@en ;
+           skos:prefLabel "Maximum optimal growth pH"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00112
+:MPO_00112 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00108 ;
+           dcterms:identifier "MPO_00112" ;
+           rdfs:label "Minimum optimal growth pH"@en ;
+           skos:prefLabel "Minimum optimal growth pH"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00113
+:MPO_00113 rdf:type owl:Class ;
+           dcterms:identifier "MPO_00113" ;
+           rdfs:label "Growth salinity"@en ;
+           skos:prefLabel "Growth salinity"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00114
+:MPO_00114 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00113 ;
+           dcterms:identifier "MPO_00114" ;
+           rdfs:label "Optimal growth salinity"@en ;
+           skos:prefLabel "Optimal growth salinity"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00115
+:MPO_00115 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00113 ;
+           dcterms:identifier "MPO_00115" ;
+           rdfs:label "Maximum growth salinity"@en ;
+           skos:prefLabel "Maximum growth salinity"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00116
+:MPO_00116 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00117 ;
+           dcterms:identifier "MPO_00116" ;
+           rdfs:label "Minimum growth salinity"@en ;
+           skos:prefLabel "Minimum growth salinity"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00117
+:MPO_00117 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00114 ;
+           dcterms:identifier "MPO_00117" ;
+           rdfs:label "Maximum optimal growth salinity"@en ;
+           skos:prefLabel "Maximum optimal growth salinity"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00118
+:MPO_00118 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00114 ;
+           dcterms:identifier "MPO_00118" ;
+           rdfs:label "Minimum optimal growth salinity"@en ;
+           skos:prefLabel "Minimum optimal growth salinity"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00119
+:MPO_00119 rdf:type owl:Class ;
+           dcterms:identifier "MPO_00119" ;
+           rdfs:label "Growth pressure"@en ;
+           skos:prefLabel "Growth pressure"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00120
+:MPO_00120 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00119 ;
+           dcterms:identifier "MPO_00120" ;
+           rdfs:label "Optimal growth pressure"@en ;
+           skos:prefLabel "Optimal growth pressure"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00121
+:MPO_00121 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00119 ;
+           dcterms:identifier "MPO_00121" ;
+           rdfs:label "Maximum growth pressure"@en ;
+           skos:prefLabel "Maximum growth pressure"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00122
+:MPO_00122 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00119 ;
+           dcterms:identifier "MPO_00122" ;
+           rdfs:label "Minimum growth pressure"@en ;
+           skos:prefLabel "Minimum growth pressure"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00123
+:MPO_00123 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00120 ;
+           dcterms:identifier "MPO_00123" ;
+           rdfs:label "Maximum optimal growth pressure"@en ;
+           skos:prefLabel "Maximum optimal growth pressure"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00124
+:MPO_00124 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00120 ;
+           dcterms:identifier "MPO_00124" ;
+           rdfs:label "Minimum optimal growth pressure"@en ;
+           skos:prefLabel "Minimum optimal growth pressure"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00125
+:MPO_00125 rdf:type owl:Class ;
+           dcterms:identifier "MPO_00125" ;
+           rdfs:label "Depth of Water"@en ;
+           skos:prefLabel "Depth of Water"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00126
+:MPO_00126 rdf:type owl:Class ;
+           dcterms:identifier "MPO_00126" ;
+           rdfs:label "Cell size"@en ;
+           skos:prefLabel "Cell size"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00127
+:MPO_00127 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00126 ;
+           dcterms:identifier "MPO_00127" ;
+           rdfs:label "Width"@en ;
+           skos:prefLabel "Width"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00128
+:MPO_00128 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00126 ;
+           dcterms:identifier "MPO_00128" ;
+           rdfs:label "Length"@en ;
+           skos:prefLabel "Length"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00129
+:MPO_00129 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00127 ;
+           dcterms:identifier "MPO_00129" ;
+           rdfs:label "Minimum width"@en ;
+           skos:prefLabel "Minimum width"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00130
+:MPO_00130 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00127 ;
+           dcterms:identifier "MPO_00130" ;
+           rdfs:label "Maximum width"@en ;
+           skos:prefLabel "Maximum width"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00131
+:MPO_00131 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00128 ;
+           dcterms:identifier "MPO_00131" ;
+           rdfs:label "Minimum length"@en ;
+           skos:prefLabel "Minimum length"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00132
+:MPO_00132 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00128 ;
+           dcterms:identifier "MPO_00132" ;
+           rdfs:label "Maximum length"@en ;
+           skos:prefLabel "Maximum length"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00133
+:MPO_00133 rdf:type owl:Class ;
+           dcterms:identifier "MPO_00133" ;
+           rdfs:label "Growth illuminance"@en ;
+           skos:prefLabel "Growth illuminance"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00134
+:MPO_00134 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00133 ;
+           dcterms:identifier "MPO_00134" ;
+           rdfs:label "Optimal growth illuminance"@en ;
+           skos:prefLabel "Optimal growth illuminance"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00135
+:MPO_00135 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00133 ;
+           dcterms:identifier "MPO_00135" ;
+           rdfs:label "Minimum Growth illuminance"@en ;
+           skos:prefLabel "Minimum Growth illuminance"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00136
+:MPO_00136 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00133 ;
+           dcterms:identifier "MPO_00136" ;
+           rdfs:label "Maximum growth illuminance"@en ;
+           skos:prefLabel "Maximum growth illuminance"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00137
+:MPO_00137 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00134 ;
+           dcterms:identifier "MPO_00137" ;
+           rdfs:label "Minimum optimal growth illuminance"@en ;
+           skos:prefLabel "Minimum optimal growth illuminance"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00138
+:MPO_00138 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00134 ;
+           dcterms:identifier "MPO_00138" ;
+           rdfs:label "Maximum optimal growth illuminance"@en ;
+           skos:prefLabel "Maximum optimal growth illuminance"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_00139
+:MPO_00139 rdf:type owl:Class ;
+           dcterms:identifier "MPO_00139" ;
+           rdfs:label "Growth radiation"@en ;
+           skos:prefLabel "Growth radiation"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01000
+:MPO_01000 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00000 ;
+           rdfs:label "Morphology"@en ;
+           skos:definition "The form and structure of microbes and their specific structural features"@en ;
+           skos:prefLabel "Morphology"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01001
+:MPO_01001 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01000 ;
+           rdfs:label "Cell shape"@en ;
+           skos:prefLabel "Cell shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01002
+:MPO_01002 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01001 ;
+           rdfs:label "Bean shape"@en ;
+           skos:altLabel "Bean"@en ,
+                         "Bean-shaped"@en ;
+           skos:prefLabel "Bean shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01003
+:MPO_01003 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01001 ;
+           rdfs:comment "Sphere-shaped (MPO_01016) was merged to this class (MPO_01003) and the  label  and prefferred label were changed from Coccus to Sphere"@en ;
+           rdfs:label "Sphere shape"@en ,
+                      "球菌"@ja ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Coccus> ,
+                        <http://ja.wikipedia.org/wiki/球菌> ;
+           skos:altLabel "Coccoid"@en ,
+                         "Coccus"@en ,
+                         "Coccus-shaped"@en ,
+                         "Sphere"@en ,
+                         "Sphere-shaped"@en ;
+           skos:prefLabel "Sphere shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01004
+:MPO_01004 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01001 ;
+           rdfs:label "Crescent shape"@en ;
+           skos:altLabel "Crescent"@en ,
+                         "Crescent-shaped"@en ;
+           skos:prefLabel "Crescent shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01005
+:MPO_01005 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01001 ;
+           rdfs:label "Curved shape"@en ;
+           skos:altLabel "Curved"@en ,
+                         "Curved-shaped"@en ;
+           skos:prefLabel "Curved shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01006
+:MPO_01006 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01001 ;
+           rdfs:label "Disc shape"@en ;
+           skos:altLabel "Disc"@en ,
+                         "Disc-shaped"@en ;
+           skos:prefLabel "Disc shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01007
+:MPO_01007 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01001 ;
+           rdfs:label "Filament shape"@en ;
+           skos:altLabel "Filament"@en ,
+                         "Filament-shaped"@en ;
+           skos:prefLabel "Filament shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01008
+:MPO_01008 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01001 ;
+           rdfs:label "Flask shape"@en ;
+           skos:altLabel "Flask"@en ,
+                         "Flask-shaped"@en ;
+           skos:prefLabel "Flask shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01009
+:MPO_01009 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01001 ;
+           rdfs:label "Fusiform shape"@en ;
+           skos:altLabel "Fusiform"@en ,
+                         "Fusiform-shaped"@en ;
+           skos:prefLabel "Fusiform shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01010
+:MPO_01010 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01001 ;
+           rdfs:label "Helical shape"@en ;
+           skos:altLabel "Helical"@en ,
+                         "Helical-shaped"@en ;
+           skos:prefLabel "Helical shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01011
+:MPO_01011 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01001 ;
+           rdfs:label "Open-ring shape"@en ;
+           skos:altLabel "Open-ring"@en ,
+                         "Open-ring-shaped"@en ;
+           skos:prefLabel "Open-ring shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01012
+:MPO_01012 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01001 ;
+           rdfs:label "Oval shape"@en ;
+           skos:altLabel "Oval"@en ,
+                         "Oval-shaped"@en ;
+           skos:prefLabel "Oval shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01013
+:MPO_01013 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01001 ;
+           rdfs:label "Ovoid shape"@en ;
+           skos:altLabel "Ovoid"@en ,
+                         "Ovoid-shaped"@en ;
+           skos:prefLabel "Ovoid shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01014
+:MPO_01014 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01001 ;
+           rdfs:label "Pleomorphic shape"@en ;
+           skos:altLabel "Pleomorphic"@en ,
+                         "Pleomorphic-shaped"@en ;
+           skos:prefLabel "Pleomorphic shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01015
+:MPO_01015 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01001 ;
+           rdfs:label "Rod shape"@en ,
+                      "桿菌"@ja ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Bacillus_(shape)> ,
+                        <http://ja.wikipedia.org/wiki/桿菌> ;
+           skos:altLabel "Bacillus"@en ,
+                         "Rod"@en ,
+                         "Rod-shaped"@en ;
+           skos:prefLabel "Rod shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01017
+:MPO_01017 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01001 ;
+           rdfs:label "Spindle shape"@en ;
+           skos:altLabel "Spindle"@en ;
+           skos:prefLabel "Spindle shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01018
+:MPO_01018 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01001 ;
+           rdfs:label "Spiral shape"@en ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Spirillum> ;
+           skos:altLabel "Spiral"@en ,
+                         "Spiral-shaped"@en ;
+           skos:prefLabel "Spiral"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01019
+:MPO_01019 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01001 ;
+           rdfs:label "Spore shape"@en ;
+           skos:altLabel "Spore"@en ,
+                         "Spore-shaped"@en ;
+           skos:prefLabel "Spore shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01020
+:MPO_01020 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01001 ;
+           rdfs:label "Square shape"@en ;
+           skos:altLabel "Square"@en ,
+                         "Square-shaped"@en ;
+           skos:prefLabel "Square shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01021
+:MPO_01021 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01001 ;
+           rdfs:label "Star shape"@en ;
+           skos:altLabel "Star"@en ,
+                         "Star-shaped"@en ;
+           skos:prefLabel "Star shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01022
+:MPO_01022 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01018 ;
+           rdfs:label "Vibrio shape"@en ;
+           skos:altLabel "Vibrio"@en ,
+                         "Vibrio-shaped"@en ;
+           skos:prefLabel "Vibrio shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01023
+:MPO_01023 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01018 ;
+           rdfs:label "Spirochete shape"@en ;
+           skos:altLabel "Spirochete"@en ,
+                         "Spirochete-shaped"@en ;
+           skos:prefLabel "Spirochete shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01025
+:MPO_01025 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01018 ;
+           rdfs:label "Spirillum shape"@en ;
+           skos:altLabel "Spirillum"@en ;
+           skos:prefLabel "Spirillum shape"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01030
+:MPO_01030 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01000 ;
+           rdfs:label "Cell arrangement"@en ;
+           skos:prefLabel "Cell arrangement"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01031
+:MPO_01031 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01030 ;
+           rdfs:label "Single arrangement"@en ;
+           skos:altLabel "Single"@en ,
+                         "Singles"@en ;
+           skos:prefLabel "Single arrangement"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01032
+:MPO_01032 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01030 ;
+           rdfs:label "Pair arrangement"@en ;
+           skos:altLabel "Pair"@en ,
+                         "Pairs"@en ;
+           skos:prefLabel "Pair arrangement"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01033
+:MPO_01033 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01030 ;
+           rdfs:label "Tetrad arrangement"@en ;
+           skos:altLabel "Tetrad"@en ,
+                         "Tetrads"@en ;
+           skos:prefLabel "Tetrad arrangement"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01034
+:MPO_01034 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01030 ;
+           rdfs:label "Chain arrangement"@en ;
+           skos:altLabel "Chain"@en ,
+                         "Chains"@en ;
+           skos:prefLabel "Chain arrangement"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01035
+:MPO_01035 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01030 ;
+           rdfs:label "Filament arrangement"@en ;
+           skos:altLabel "Filament"@en ,
+                         "Filaments"@en ;
+           skos:prefLabel "Filament arrangement"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01036
+:MPO_01036 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01030 ;
+           rdfs:label "Cluster arrangement"@en ;
+           skos:altLabel "Cluster"@en ,
+                         "Clusters"@en ;
+           skos:prefLabel "Cluster arrangement"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01037
+:MPO_01037 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01030 ;
+           rdfs:label "Irregular colony"@en ;
+           skos:prefLabel "Irregular colony"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01038
+:MPO_01038 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01030 ;
+           rdfs:label "V-shaped form arrangement"@en ;
+           skos:altLabel "V-shaped form"@en ,
+                         "V-shaped forms"@en ;
+           skos:prefLabel "V-shaped form arrangement"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01039
+:MPO_01039 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01035 ;
+           rdfs:label "Filamentous arrangement"@en ;
+           skos:altLabel "Filamentous"@en ;
+           skos:prefLabel "Filamentous arrangement"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01040
+:MPO_01040 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01032 ;
+           rdfs:label "Diplococcus arrangement"@en ;
+           skos:altLabel "Diplococcus"@en ;
+           skos:prefLabel "Diplococcus arrangement"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01041
+:MPO_01041 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01032 ;
+           rdfs:label "Diplobacillus arrangement"@en ;
+           skos:altLabel "Diplobacillus"@en ;
+           skos:prefLabel "Diplobacillus arrangement"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01042
+:MPO_01042 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01032 ;
+           rdfs:label "Diplococcus encapsulated arrangement"@en ;
+           skos:altLabel "Diplococcus encapsulated"@en ;
+           skos:prefLabel "Diplococcus encapsulated arrangement"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01043
+:MPO_01043 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01034 ;
+           rdfs:label "Streptococcus arrangement"@en ;
+           skos:altLabel "Streptococcus"@en ;
+           skos:prefLabel "Streptococcus arrangement"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01044
+:MPO_01044 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01034 ;
+           rdfs:label "Streptobacillus arrangement"@en ;
+           skos:altLabel "Streptobacillus"@en ;
+           skos:prefLabel "Streptobacillus arrangement"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01045
+:MPO_01045 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01036 ;
+           rdfs:label "Sarcina arrangement"@en ;
+           skos:altLabel "Sarcina"@en ;
+           skos:prefLabel "Sarcina arrangement"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01046
+:MPO_01046 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01036 ;
+           rdfs:label "Staphylococcus arrangement"@en ;
+           skos:altLabel "Staphylococcus"@en ;
+           skos:prefLabel "Staphylococcus arrangement"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_01047
+:MPO_01047 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_01030 ;
+           rdfs:label "Sheathed arrangement"@en ;
+           skos:altLabel "Sheathed"@en ;
+           skos:prefLabel "Sheathed arrangement"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02000
+:MPO_02000 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00000 ;
+           rdfs:label "Motility"@en ;
+           skos:prefLabel "Motility"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02001
+:MPO_02001 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02000 ;
+           rdfs:label "Motile"@en ;
+           skos:prefLabel "Motile"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02002
+:MPO_02002 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02000 ;
+           rdfs:label "Nonmotile"@en ;
+           skos:prefLabel "Nonmotile"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02003
+:MPO_02003 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02000 ;
+           rdfs:label "Taxis"@en ,
+                      "走性"@ja ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Taxis> ;
+           skos:prefLabel "Taxis"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02004
+:MPO_02004 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02000 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02005
+:MPO_02005 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02003 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02006
+:MPO_02006 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02003 ;
+           rdfs:label "Barotaxis"@en ,
+                      "走圧性"@ja ;
+           skos:prefLabel "Barotaxis"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02007
+:MPO_02007 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02003 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02008
+:MPO_02008 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02003 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02009
+:MPO_02009 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02003 ;
+           rdfs:label "Galvanotaxis"@en ,
+                      "電気走性"@ja ;
+           skos:altLabel "Electrotaxis"@en ;
+           skos:prefLabel "Galvanotaxis"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02010
+:MPO_02010 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02003 ;
+           rdfs:label "Magnetotaxis"@en ,
+                      "走磁性"@ja ;
+           skos:prefLabel "Magnetotaxis"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02011
+:MPO_02011 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02003 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02012
+:MPO_02012 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02003 ;
+           rdfs:label "Hydrotaxis"@en ,
+                      "走水質"@ja ;
+           skos:prefLabel "Hydrotaxis"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02013
+:MPO_02013 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02003 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02014
+:MPO_02014 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02003 ;
+           rdfs:label "Scotophobotaxis"@en ;
+           skos:prefLabel "Scotophobotaxis"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02015
+:MPO_02015 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02003 ;
+           rdfs:label "Rheotaxis"@en ,
+                      "走流性"@ja ;
+           skos:prefLabel "Rheotaxis"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02016
+:MPO_02016 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02003 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02017
+:MPO_02017 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02003 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02018
+:MPO_02018 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02004 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02019
+:MPO_02019 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02004 ;
+           rdfs:label "Kinokinesis"@en ;
+           skos:prefLabel "Kinokinesis"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02020
+:MPO_02020 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02004 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02021
+:MPO_02021 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02004 ;
+           rdfs:label "Photokinesis"@en ;
+           skos:prefLabel "Photokinesis"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02022
+:MPO_02022 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02000 ;
+           rdfs:label "Gliding motility"@en ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Bacterial_gliding> ;
+           skos:prefLabel "Gliding motility"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02023
+:MPO_02023 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02000 ;
+           rdfs:label "Twitching motility"@en ;
+           skos:prefLabel "Twitching motility"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02024
+:MPO_02024 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02000 ;
+           rdfs:label "Swarming motility"@en ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Swarming_motility> ;
+           skos:prefLabel "Swarming motility"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02025
+:MPO_02025 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02000 ;
+           rdfs:label "Swimming motility"@en ;
+           skos:prefLabel "Swimming motility"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02026
+:MPO_02026 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02000 ;
+           rdfs:label "Darting motility"@en ;
+           skos:prefLabel "Darting motility"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02027
+:MPO_02027 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02000 ;
+           rdfs:label "Tumbling motility"@en ;
+           skos:prefLabel "Tumbling motility"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02028
+:MPO_02028 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02000 ;
+           rdfs:label "Sliding motility"@en ;
+           skos:prefLabel "Sliding motility"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02029
+:MPO_02029 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_02000 ;
+           rdfs:label "Floating motility"@en ;
+           skos:prefLabel "Floating motility"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03000
+:MPO_03000 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00000 ;
+           rdfs:label "Classification on environmental growth condition"@en ;
+           skos:prefLabel "Classification on environmental growth condition"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03001
+:MPO_03001 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03013 ;
+           rdfs:label "Thermophilic"@en ,
+                      "好熱性"@ja ;
+           skos:altLabel "Thermophile"@en ;
+           skos:definition "A microbial organism that thrives at relatively high temperatures, between 45 and 122 C (113 and 252 F)."@en ;
+           skos:prefLabel "Thermophilic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03002
+:MPO_03002 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03004 ;
+           rdfs:label "Hyperthermophilic"@en ,
+                      "超好熱性"@ja ;
+           skos:altLabel "Hyperthermophile"@en ;
+           skos:definition "A subset of obligate thermophiles for which optimal growth temperatures are above 80C."@en ;
+           skos:prefLabel "Hyperthermophilic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03003
+:MPO_03003 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03013 ;
+           rdfs:label "Psychrophilic"@en ,
+                      "好冷性"@ja ;
+           skos:altLabel "Cryophile"@en ,
+                         "Psychrophile"@en ;
+           skos:definition "Psychrophilic microbes are a type of bacteria or archia that are capable of growing and thriving in cold environment. Thier optimal growth temperatures are 15 C or lower and maximal are 20 C or lower and mimal growth temperatures are below 0 C."@en ;
+           skos:prefLabel "Psychrophilic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03004
+:MPO_03004 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03001 ;
+           rdfs:label "Obligate thermophilic"@en ,
+                      "偏性好熱性"@ja ;
+           skos:altLabel "Extreme thermophile"@en ,
+                         "Obligate thermophile"@en ;
+           skos:prefLabel "Obligate thermophilic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03005
+:MPO_03005 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03001 ;
+           rdfs:label "Facultative thermophilic"@en ,
+                      "通性好熱性"@ja ;
+           skos:altLabel "Facultative thermophile"@en ;
+           skos:prefLabel "Facultative thermophilic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03006
+:MPO_03006 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03000 .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03007
+:MPO_03007 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03006 ;
+           rdfs:label "Halophile"@en ,
+                      "好塩性微生物"@ja ;
+           skos:prefLabel "Halophilic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03008
+:MPO_03008 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03006 ;
+           rdfs:label "Halotolerant"@en ,
+                      "耐塩性微生物"@ja ;
+           skos:prefLabel "Halotolerant"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03009
+:MPO_03009 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03000 ;
+           rdfs:label "Classification of growth pH"@en ;
+           skos:prefLabel "Classification of growth pH"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03010
+:MPO_03010 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03009 ;
+           rdfs:label "Acidophilic"@en ,
+                      "好酸性微生物"@ja ;
+           skos:altLabel "Acidophile"@en ;
+           skos:prefLabel "Acidophilic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03011
+:MPO_03011 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03009 ;
+           rdfs:label "Alkaliphilic"@en ,
+                      "好アルカリ性微生物"@ja ;
+           skos:altLabel "Alkalinophile"@en ,
+                         "Alkaliphile"@en ,
+                         "Alkalophile"@en ,
+                         "Basophile"@en ;
+           skos:prefLabel "Alkaliphilic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03012
+:MPO_03012 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03009 ;
+           rdfs:label "Neutrophilic"@en ;
+           skos:altLabel "Neutrophile"@en ;
+           skos:prefLabel "Neutrophilic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03013
+:MPO_03013 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03000 ;
+           rdfs:label "Classification of growth temperature"@en ,
+                      "温度許容度"@ja ;
+           skos:altLabel "Temperature tolerance"@en ;
+           skos:prefLabel "Classification of growth temperature"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03014
+:MPO_03014 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03000 ;
+           rdfs:label "Classification of growth pressure"@en ;
+           skos:prefLabel "Classification of growth pressure"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03015
+:MPO_03015 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03014 ;
+           rdfs:label "Peizophilic"@en ,
+                      "好高圧性"@ja ;
+           skos:altLabel "Peizophile"@en ;
+           skos:prefLabel "Peizophilic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03016
+:MPO_03016 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03015 ;
+           rdfs:label "Obligate piezophilic"@en ,
+                      "偏性好高圧微生物"@ja ;
+           skos:altLabel "Obligate piezophile"@en ;
+           skos:prefLabel "Obligate piezophilic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03017
+:MPO_03017 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03015 ;
+           rdfs:label "Facultative piezophilic"@en ,
+                      "通性好高圧微生物"@ja ;
+           skos:altLabel "Facultative piezophile"@en ;
+           skos:prefLabel "Facultative piezophilic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03018
+:MPO_03018 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03000 ;
+           rdfs:label "Radioresistant"@en ,
+                      "放射線耐性"@ja ;
+           skos:prefLabel "Radioresistant"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03019
+:MPO_03019 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03003 ;
+           rdfs:label "Psychrotrophic"@en ,
+                      "低温性"@ja ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Psychrotrophic_bacteria> ;
+           skos:definition "Psychrotrophic microbes are cold-tolerant bacteria or archaea that can grow or even thrive in a cold environment although their optimal growth temperatures are between above 15 C and below 20 C. Their maximal growth temperatures are below 20 C."@en ;
+           skos:prefLabel "Psychrotrophic"@en ,
+                          "Psychrotrophile"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03020
+:MPO_03020 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03013 ;
+           rdfs:label "Thermotolerant"@en ,
+                      "耐熱性"@ja ;
+           skos:prefLabel "Thermotolerant"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03021
+:MPO_03021 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03013 ;
+           rdfs:label "Psychrotolerant"@en ,
+                      "耐寒性"@ja ;
+           skos:prefLabel "Psychrotolerant"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03022
+:MPO_03022 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03013 ;
+           rdfs:label "Mesophilic"@en ,
+                      "中等温度好性"@ja ;
+           skos:altLabel "Mesophile"@en ;
+           skos:definition "A mibrobial organism that thrives at moderate temperature, typically between 20 and 45 C (68 and 113 F)."@en ;
+           skos:prefLabel "Mesophilic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03023
+:MPO_03023 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03009 ;
+           rdfs:label "Alkalitolerant"@en ;
+           skos:prefLabel "Alkalitolerant"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03024
+:MPO_03024 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03006 ;
+           rdfs:label "Euryhaline"@en ,
+                      "広塩性の"@ja ;
+           skos:prefLabel "Euryhaline"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_03025
+:MPO_03025 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_03006 ;
+           rdfs:label "Stenohaline"@en ,
+                      "狭塩性の"@ja ;
+           skos:prefLabel "Stenohaline"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04000
+:MPO_04000 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00000 ;
+           rdfs:label "Metabolism related phenotype"@en ;
+           skos:prefLabel "Metabolism related phenotype"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04001
+:MPO_04001 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04000 ;
+           rdfs:label "Oxygen requirement"@en ;
+           skos:prefLabel "Oxygen requirement"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04002
+:MPO_04002 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04001 ;
+           rdfs:label "Aerobe"@en ,
+                      "好気性微生物"@ja ;
+           skos:prefLabel "Aerobe"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04003
+:MPO_04003 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04001 ;
+           rdfs:label "Anaerobe"@en ,
+                      "嫌気性微生物"@ja ;
+           skos:prefLabel "Anaerobe"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04004
+:MPO_04004 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04002 ;
+           rdfs:label "Obligate aerobe"@en ,
+                      "偏性好気性微生物"@ja ;
+           skos:prefLabel "Obligate aerobe"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04005
+:MPO_04005 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04002 ;
+           rdfs:label "Facultative aerobe"@en ,
+                      "通性好気性微生物"@ja ;
+           skos:prefLabel "Facultative aerobe"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04006
+:MPO_04006 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04003 ;
+           rdfs:label "Obligate anaerobe"@en ,
+                      "偏性嫌気微生物"@ja ;
+           skos:prefLabel "Obligate anaerobe"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04007
+:MPO_04007 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04003 ;
+           rdfs:label "Facultative anaerobe"@en ,
+                      "通性嫌気微生物"@ja ;
+           skos:prefLabel "Facultative anaerobe"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04008
+:MPO_04008 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04003 ;
+           rdfs:label "Aerotolerant organism"@en ;
+           skos:prefLabel "Aerotolerant organism"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04009
+:MPO_04009 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04002 ;
+           rdfs:label "Microaerophile"@en ,
+                      "微好気性生物"@ja ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Microaerophile> ;
+           skos:prefLabel "Microaerophile"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04010
+:MPO_04010 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04000 ;
+           rdfs:label "Energy source"@en ;
+           skos:prefLabel "Energy source"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04011
+:MPO_04011 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04010 ;
+           rdfs:label "Autotrophic"@en ,
+                      "独立栄養"@ja ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Autotrophic> ;
+           skos:altLabel "Autotroph"@en ;
+           skos:prefLabel "Autotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04012
+:MPO_04012 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04010 ;
+           rdfs:label "Heterotrophic"@en ,
+                      "従属栄養性"@ja ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Heterotrophic> ;
+           skos:altLabel "Heterotroph"@en ;
+           skos:prefLabel "Heterotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04013
+:MPO_04013 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04010 ;
+           rdfs:label "Lithotrophic"@en ,
+                      "無機栄養性"@ja ;
+           skos:altLabel "Lithotroph"@en ,
+                         "無機栄養細菌"@ja ;
+           skos:prefLabel "Lithotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04014
+:MPO_04014 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04015 ;
+           rdfs:label "Methanotrophic"@en ;
+           skos:altLabel "Methanotroph"@en ;
+           skos:prefLabel "Methanotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04015
+:MPO_04015 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04010 ;
+           rdfs:label "Methylotrophic"@en ;
+           skos:altLabel "Methylotroph"@en ;
+           skos:prefLabel "Methylotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04016
+:MPO_04016 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04010 ;
+           rdfs:label "Oligotrophic"@en ;
+           skos:altLabel "Oligotroph"@en ;
+           skos:prefLabel "Oligotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04017
+:MPO_04017 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04010 ;
+           rdfs:label "Organotrophic"@en ,
+                      "有機栄養の"@ja ;
+           skos:altLabel "Organotroph"@en ;
+           skos:prefLabel "Organotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04018
+:MPO_04018 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04010 ;
+           rdfs:label "Diazotrophic"@en ,
+                      "ジアゾ栄養生物"@ja ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Diazotroph> ;
+           skos:altLabel "Diazotroph"@en ;
+           skos:prefLabel "Diazotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04019
+:MPO_04019 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04010 ;
+           rdfs:label "Phototrophic"@en ,
+                      "光栄養"@ja ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Phototroph> ;
+           skos:altLabel "Phototroph"@en ;
+           skos:prefLabel "Phototrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04020
+:MPO_04020 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04010 ;
+           rdfs:label "Photosynthetic"@en ,
+                      "光合成の"@ja ;
+           skos:altLabel "Photosynthetic microbe"@en ;
+           skos:prefLabel "Photosynthetic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04021
+:MPO_04021 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04010 ;
+           rdfs:label "Mixotrophic"@en ;
+           skos:altLabel "Mixotroph"@en ;
+           skos:prefLabel "Mixotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04022
+:MPO_04022 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04010 ;
+           rdfs:label "Chemotrophic"@en ,
+                      "化学合成生物"@ja ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Chemotrophic> ;
+           skos:altLabel "Chemotroph"@en ;
+           skos:prefLabel "Chemotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04023
+:MPO_04023 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04003 ;
+           rdfs:label "Microanaerobe"@en ;
+           skos:prefLabel "Microanaerobe"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04024
+:MPO_04024 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04010 ;
+           rdfs:label "Copiotrophic"@en ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Copiotrophic> ;
+           skos:altLabel "Copiotroph"@en ;
+           skos:prefLabel "Copiotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04025
+:MPO_04025 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04019 ;
+           rdfs:label "Photoorganotrophic"@en ;
+           skos:altLabel "Photoorganotroph"@en ;
+           skos:prefLabel "Photoorganotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04026
+:MPO_04026 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04019 ;
+           rdfs:label "Photolithotrophic"@en ;
+           skos:altLabel "Photolithotroph"@en ;
+           skos:prefLabel "Photolithotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04027
+:MPO_04027 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04019 ;
+           rdfs:label "Photoheterotrophic"@en ,
+                      "光従属栄養"@ja ;
+           skos:altLabel "Photoheterotroph"@en ;
+           skos:prefLabel "Photoheterotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04028
+:MPO_04028 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04019 ;
+           rdfs:label "Photoautotrophic"@en ,
+                      "光独立栄養"@ja ;
+           skos:altLabel "Photoautotroph"@en ;
+           skos:prefLabel "Photoautotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04029
+:MPO_04029 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04019 ;
+           rdfs:label "Photoorganoheterotrophic"@en ;
+           skos:altLabel "Photoorganoheterotroph"@en ;
+           skos:prefLabel "Photoorganoheterotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04030
+:MPO_04030 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04019 ;
+           rdfs:label "Photoorganoautotrophic"@en ;
+           skos:altLabel "Photoorganoautotroph"@en ;
+           skos:prefLabel "Photoorganoautotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04031
+:MPO_04031 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04019 ;
+           rdfs:label "Photolithoheterotrophic"@en ;
+           skos:altLabel "Photolithoheterotroph"@en ;
+           skos:prefLabel "Photolithoheterotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04032
+:MPO_04032 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04019 ;
+           rdfs:label "Photolithoautotrophic"@en ;
+           skos:altLabel "Photolithoautotroph"@en ;
+           skos:prefLabel "Photolithoautotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04033
+:MPO_04033 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04022 ;
+           rdfs:label "Chemoorganotrophic"@en ;
+           skos:altLabel "Chemoorganotroph"@en ;
+           skos:prefLabel "Chemoorganotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04034
+:MPO_04034 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04022 ;
+           rdfs:label "Chemolithotrophic"@en ;
+           skos:altLabel "Chemolithotroph"@en ;
+           skos:prefLabel "Chemolithotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04035
+:MPO_04035 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04022 ;
+           rdfs:label "Chemoheterotrophic"@en ;
+           skos:altLabel "Chemoheterotroph"@en ;
+           skos:prefLabel "Chemoheterotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04036
+:MPO_04036 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04022 ;
+           rdfs:label "Chemoautotrophic"@en ;
+           skos:altLabel "Chemoautotroph"@en ;
+           skos:prefLabel "Chemoautotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04037
+:MPO_04037 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04022 ;
+           rdfs:label "Chemoorganoheterotrophic"@en ;
+           skos:altLabel "Chemoorganoheterotroph"@en ;
+           skos:prefLabel "Chemoorganoheterotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04038
+:MPO_04038 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04022 ;
+           rdfs:label "Chemoorganoautotrophic"@en ;
+           skos:altLabel "Chemoorganoautotroph"@en ;
+           skos:prefLabel "Chemoorganoautotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04039
+:MPO_04039 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04022 ;
+           rdfs:label "Chemolithoheterotrophic"@en ;
+           skos:altLabel "Chemolithoheterotroph"@en ;
+           skos:prefLabel "Chemolithoheterotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04040
+:MPO_04040 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04022 ;
+           rdfs:label "Chemolithoautotrophic"@en ,
+                      "独立栄養化学合成性"@ja ;
+           skos:altLabel "Chemolithoautotroph"@en ;
+           skos:prefLabel "Chemolithoautotrophic"@en ,
+                          "独立栄養化学合成細菌"@ja .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04041
+:MPO_04041 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04013 ;
+           rdfs:label "Lithoautotrophic"@en ;
+           skos:altLabel "Lithoautotroph"@en ;
+           skos:prefLabel "Lithoautotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04042
+:MPO_04042 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04013 ;
+           rdfs:label "Lithoheterotrophic"@en ;
+           skos:altLabel "Lithoheterotroph"@en ;
+           skos:prefLabel "Lithoheterotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04043
+:MPO_04043 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04010 ;
+           rdfs:label "Carboxydotrophic"@en ;
+           skos:altLabel "Carboxydotroph"@en ;
+           skos:definition "Any organism that can tolerate a high concentration of carbon monoxide"@en ;
+           skos:prefLabel "Carboxydotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04044
+:MPO_04044 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04012 ;
+           rdfs:label "Auxotrophic"@en ,
+                      "栄養要求株"@zh-tw ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Auxotrophy> ;
+           skos:prefLabel "Auxotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04045
+:MPO_04045 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04010 ;
+           rdfs:label "Capnophilic"@en ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Capnophile> ;
+           skos:altLabel "Capnophile"@en ;
+           skos:prefLabel "Capnophilic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04046
+:MPO_04046 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04000 ;
+           rdfs:label "Fermentation"@en ;
+           skos:prefLabel "Fermentation"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04047
+:MPO_04047 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04046 ;
+           rdfs:label "Alcohol fermentation"@en ;
+           skos:prefLabel "Alcohol fermentation"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04048
+:MPO_04048 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04046 ;
+           rdfs:label "Acetate fermentation"@en ;
+           skos:prefLabel "Acetate fermentation"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04049
+:MPO_04049 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04046 ;
+           rdfs:label "Lactate fermentation"@en ;
+           skos:prefLabel "Lactate fermentation"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04050
+:MPO_04050 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04046 ;
+           rdfs:label "Aceton-butanol fermentation"@en ;
+           skos:prefLabel "Aceton-butanol fermentation"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04052
+:MPO_04052 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04010 ;
+           rdfs:label "Phagotrophic"@en ,
+                      "摂食栄養"@ja ;
+           skos:prefLabel "Phagotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04053
+:MPO_04053 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04000 ;
+           rdfs:label "Assimilation"@en ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Assimilation_(biology)> ;
+           skos:prefLabel "Assimilation"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04054
+:MPO_04054 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04000 ;
+           rdfs:label "Catabolism"@en ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Catabolism> ;
+           skos:altLabel "Dissimilatory process"@en ;
+           skos:prefLabel "Catabolism"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04055
+:MPO_04055 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04053 ;
+           rdfs:label "Nitrogen fixation"@en ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Nitrogen_fixation> ;
+           skos:prefLabel "Nitrogen fixation"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04056
+:MPO_04056 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04000 ;
+           rdfs:label "Biosynthesis"@en ;
+           skos:prefLabel "Biosynthesis"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04057
+:MPO_04057 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04056 ;
+           rdfs:label "Lipid"@en ;
+           skos:prefLabel "Lipid"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04058
+:MPO_04058 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04057 ;
+           rdfs:label "Quinone"@en ;
+           skos:prefLabel "Quinone"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04059
+:MPO_04059 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04058 ;
+           rdfs:label "Benzoquinone"@en ;
+           skos:prefLabel "Benzoquinone"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04060
+:MPO_04060 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04058 ;
+           rdfs:label "Naphthoquinone"@en ;
+           skos:prefLabel "Naphthoquinone"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04061
+:MPO_04061 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04073 ;
+           rdfs:label "MK-4"@en ;
+           skos:altLabel "Menaquinone-4"@en ;
+           skos:prefLabel "MK-4"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04062
+:MPO_04062 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04073 ;
+           rdfs:label "MK-5"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/14009404> ;
+           skos:altLabel "Menaquinone-5"@en ;
+           skos:prefLabel "MK-5"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04063
+:MPO_04063 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04073 ;
+           rdfs:label "MK-6"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/5283547> ;
+           skos:altLabel "Menaquinone-6"@en ;
+           skos:prefLabel "MK-6"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04064
+:MPO_04064 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04073 ;
+           rdfs:label "MK-7"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/5287554> ;
+           skos:altLabel "Menaquinone-7"@en ;
+           skos:prefLabel "MK-7"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04065
+:MPO_04065 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04073 ;
+           rdfs:label "MK-8"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/45479636> ;
+           skos:altLabel "Menaquinone-8"@en ;
+           skos:prefLabel "MK-8"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04066
+:MPO_04066 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04073 ;
+           rdfs:label "MK-9"@en ;
+           skos:altLabel "Menaquinone-9"@en ;
+           skos:prefLabel "MK-9"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04067
+:MPO_04067 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04073 ;
+           rdfs:label "MK-10"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/9988135> ;
+           skos:altLabel "Menaquinone-10"@en ;
+           skos:prefLabel "MK-10"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04068
+:MPO_04068 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04073 ;
+           rdfs:label "MK-11"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/6442190> ;
+           skos:altLabel "Menaquinone-11"@en ;
+           skos:prefLabel "MK-11"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04069
+:MPO_04069 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04073 ;
+           rdfs:label "MK-12"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/6442143> ;
+           skos:altLabel "Menaquinone-12"@en ;
+           skos:prefLabel "MK-12"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04070
+:MPO_04070 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04073 ;
+           rdfs:label "MK-13"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/14325016> ;
+           skos:altLabel "Menaquinone-13"@en ;
+           skos:prefLabel "MK-13"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04071
+:MPO_04071 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04073 ;
+           rdfs:label "MK-14"@en ;
+           skos:altLabel "Menaquinone-14"@en ;
+           skos:prefLabel "MK-14"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04072
+:MPO_04072 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04073 ;
+           rdfs:label "MK-n"@en ;
+           skos:altLabel "Menaquinone-n"@en ;
+           skos:prefLabel "MK-n"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04073
+:MPO_04073 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04060 ;
+           rdfs:label "MK"@en ;
+           skos:altLabel "Menaquinone"@en ;
+           skos:prefLabel "MK"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04074
+:MPO_04074 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04060 ;
+           rdfs:label "DMK"@en ;
+           skos:altLabel "Demethylmenaquinone"@en ;
+           skos:prefLabel "DMK"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04075
+:MPO_04075 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04074 ;
+           rdfs:label "DMK-5"@en ;
+           skos:altLabel "Demethylmenaquinone-5"@en ;
+           skos:prefLabel "DMK-5"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04076
+:MPO_04076 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04074 ;
+           rdfs:label "DMK-6"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/25245576> ;
+           skos:altLabel "Demethylmenaquinone-6"@en ;
+           skos:prefLabel "DMK-6"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04077
+:MPO_04077 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04074 ;
+           rdfs:label "DMK-7"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/25244494> ;
+           skos:altLabel "Demethylmenaquinone-7"@en ;
+           skos:prefLabel "DMK-7"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04078
+:MPO_04078 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04074 ;
+           rdfs:label "DMK-8"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/5376004> ;
+           skos:altLabel "Demethylmenaquinone-8"@en ;
+           skos:prefLabel "DMK-8"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04079
+:MPO_04079 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04060 ;
+           rdfs:label "MTK"@en ;
+           skos:altLabel "Methionaquinone-7"@en ;
+           skos:prefLabel "MTK"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04080
+:MPO_04080 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04079 ;
+           rdfs:label "MTK-7"@en ;
+           skos:altLabel "Methionaquinone-7"@en ;
+           skos:prefLabel "MTK-7"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04081
+:MPO_04081 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04093 ;
+           rdfs:label "Q-3"@en ;
+           skos:altLabel "Ubiquinone-3"@en ;
+           skos:prefLabel "Q-3"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04082
+:MPO_04082 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04093 ;
+           rdfs:label "Q-4"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/16219098> ;
+           skos:altLabel "Ubiquinone-4"@en ;
+           skos:prefLabel "Q-4"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04083
+:MPO_04083 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04093 ;
+           rdfs:label "Q-5"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/4462> ;
+           skos:altLabel "Ubiquinone-5"@en ;
+           skos:prefLabel "Q-5"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04084
+:MPO_04084 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04093 ;
+           rdfs:label "Q-6"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/5283544> ;
+           skos:altLabel "Ubiquinone-6"@en ;
+           skos:prefLabel "Q-6"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04085
+:MPO_04085 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04093 ;
+           rdfs:label "Q-7"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/5289540> ;
+           skos:altLabel "Ubiquinone-7"@en ;
+           skos:prefLabel "Q-7"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04086
+:MPO_04086 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04093 ;
+           rdfs:label "Q-8"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/5283546> ;
+           skos:altLabel "Ubiquinone-8"@en ;
+           skos:prefLabel "Q-8"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04087
+:MPO_04087 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04093 ;
+           rdfs:label "Q-9"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/5280473> ;
+           skos:altLabel "Ubiquinone-9"@en ;
+           skos:prefLabel "Q-9"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04088
+:MPO_04088 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04093 ;
+           rdfs:label "Q-10"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/5281915> ;
+           skos:altLabel "Ubiquinone-10"@en ;
+           skos:prefLabel "Q-10"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04089
+:MPO_04089 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04093 ;
+           rdfs:label "Q-11"@en ;
+           skos:altLabel "Ubiquinone-11"@en ;
+           skos:prefLabel "Q-11"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04090
+:MPO_04090 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04093 ;
+           rdfs:label "Q-12"@en ;
+           skos:altLabel "Ubiquinone-12"@en ;
+           skos:prefLabel "Q-12"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04091
+:MPO_04091 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04093 ;
+           rdfs:label "Q-13"@en ;
+           skos:altLabel "Ubiquinone-13"@en ;
+           skos:prefLabel "Q-13"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04092
+:MPO_04092 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04093 ;
+           rdfs:label "Q-14"@en ;
+           skos:altLabel "Ubiquinone-14"@en ;
+           skos:prefLabel "Q-14"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04093
+:MPO_04093 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04059 ;
+           rdfs:label "Q"@en ;
+           skos:altLabel "Ubiquinone"@en ;
+           skos:prefLabel "Q"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04094
+:MPO_04094 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04059 ;
+           rdfs:label "MQ"@en ;
+           skos:prefLabel "MQ"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04095
+:MPO_04095 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04094 ;
+           rdfs:label "MQ-8"@en ;
+           skos:altLabel "18-methylene-ubiquinone-8" ;
+           skos:prefLabel "MQ-8"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04096
+:MPO_04096 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04059 ;
+           rdfs:label "MDMQ"@en ;
+           skos:prefLabel "MDMQ"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04097
+:MPO_04097 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04096 ;
+           rdfs:label "MDMQ-6"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/9988135> ;
+           skos:altLabel "11-methylene-18-dimethyl-ubiquinone-6"@en ;
+           skos:prefLabel "MDMQ-6"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04098
+:MPO_04098 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04060 ;
+           rdfs:label "TPQ"@en ;
+           skos:altLabel "Thermoplasma quinone"@en ;
+           skos:prefLabel "TPQ"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04099
+:MPO_04099 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04098 ;
+           rdfs:label "TPQ-6"@en ;
+           skos:altLabel "Thermoplasma quinone-6"@en ;
+           skos:prefLabel "TPQ-6"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04100
+:MPO_04100 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04098 ;
+           rdfs:label "TPQ-7"@en ;
+           skos:altLabel "Thermoplasma quinone-7"@en ;
+           skos:prefLabel "TPQ-7"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04101
+:MPO_04101 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04062 ;
+           rdfs:label "MK-5(H2)"@en ;
+           skos:altLabel "Menaquinone-5(H2)"@en ;
+           skos:prefLabel "MK-5(H2)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04102
+:MPO_04102 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04063 ;
+           rdfs:label "MK-6(H2)"@en ;
+           skos:altLabel "Menaquinone-6(H2)"@en ;
+           skos:prefLabel "MK-6(H2)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04103
+:MPO_04103 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04065 ;
+           rdfs:label "MK-8(H2)"@en ;
+           skos:altLabel "Menaquinone-8(H2)"@en ;
+           skos:prefLabel "MK-8(H2)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04104
+:MPO_04104 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04065 ;
+           rdfs:label "MK-8(H4)"@en ;
+           skos:altLabel "Menaquinone-8(H4)"@en ;
+           skos:prefLabel "MK-8(H4)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04105
+:MPO_04105 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04066 ;
+           rdfs:label "MK-9(H0)"@en ;
+           skos:altLabel "Menaquinone-9(H0)"@en ;
+           skos:prefLabel "MK-9(H0)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04106
+:MPO_04106 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04066 ;
+           rdfs:label "MK-9(H2)"@en ;
+           skos:altLabel "Menaquinone-9(H2)"@en ;
+           skos:prefLabel "MK-9(H2)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04107
+:MPO_04107 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04066 ;
+           rdfs:label "MK-9(H4)"@en ;
+           skos:altLabel "Menaquinone-9(H4)"@en ;
+           skos:prefLabel "MK-9(H4)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04108
+:MPO_04108 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04066 ;
+           rdfs:label "MK-9(H6)"@en ;
+           skos:altLabel "Menaquinone-9(H6)"@en ;
+           skos:prefLabel "MK-9(H6)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04109
+:MPO_04109 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04066 ;
+           rdfs:label "MK-9(H8)"@en ;
+           skos:altLabel "Menaquinone-9(H8)"@en ;
+           skos:prefLabel "MK-9(H8)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04110
+:MPO_04110 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04067 ;
+           rdfs:label "MK-10(H4)"@en ;
+           skos:altLabel "Menaquinone-10(H4)"@en ;
+           skos:prefLabel "MK-10(H4)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04111
+:MPO_04111 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04067 ;
+           rdfs:label "MK-10(H6)"@en ;
+           skos:altLabel "Menaquinone-10(H6)"@en ;
+           skos:prefLabel "MK-10(H6)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04112
+:MPO_04112 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04067 ;
+           rdfs:label "MK-10(H8)"@en ;
+           skos:altLabel "Menaquinone-10(H8)"@en ;
+           skos:prefLabel "MK-10(H8)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04113
+:MPO_04113 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04068 ;
+           rdfs:label "MK-11(H6)"@en ;
+           skos:altLabel "Menaquinone-11(H6)"@en ;
+           skos:prefLabel "MK-11(H6)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04114
+:MPO_04114 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04080 ;
+           rdfs:label "MTK-7(H2)"@en ;
+           skos:altLabel "Methionaquinone-7(H2)"@en ;
+           skos:prefLabel "MTK-7(H2)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04115
+:MPO_04115 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04080 ;
+           rdfs:label "MTK-7(H4)"@en ;
+           skos:altLabel "Methionaquinone-7(H4)"@en ;
+           skos:prefLabel "MTK-7(H4)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04116
+:MPO_04116 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04060 ;
+           rdfs:label "TMK"@en ;
+           skos:prefLabel "TMK"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04117
+:MPO_04117 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04116 ;
+           rdfs:label "TMK-6"@en ;
+           skos:prefLabel "TMK-6"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04118
+:MPO_04118 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04059 ;
+           rdfs:label "RQ"@en ;
+           skos:prefLabel "RQ"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04119
+:MPO_04119 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04118 ;
+           rdfs:label "RQ-8"@en ;
+           skos:altLabel "Rhodoquinone-8"@en ;
+           skos:prefLabel "RQ-8"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04120
+:MPO_04120 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04118 ;
+           rdfs:label "RQ-10"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pccompound/6441300> ;
+           skos:altLabel "Rhodoquinone-10"@en ;
+           skos:prefLabel "RQ-10"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04121
+:MPO_04121 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04067 ;
+           rdfs:label "MK-10(H2)"@en ;
+           skos:altLabel "Menaquinone-10(H2)"@en ;
+           skos:prefLabel "MK-10(H2)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04122
+:MPO_04122 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04067 ;
+           rdfs:label "MK-10(H0)"@en ;
+           skos:altLabel "Menaquinone-10(H0)"@en ;
+           skos:prefLabel "MK-10(H0)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04123
+:MPO_04123 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04068 ;
+           rdfs:label "MK-11(H4)"@en ;
+           skos:altLabel "Menaquinone-11(H4)"@en ;
+           skos:prefLabel "MK-11(H4)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04124
+:MPO_04124 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04068 ;
+           rdfs:label "MK-11(H2)"@en ;
+           skos:altLabel "Menaquinone-11(H2)"@en ;
+           skos:prefLabel "MK-11(H2)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04125
+:MPO_04125 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04061 ;
+           rdfs:label "MK-4(H6)"@en ;
+           skos:altLabel "Menaquinone-4(H6)"@en ;
+           skos:prefLabel "MK-4(H6)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04126
+:MPO_04126 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04061 ;
+           rdfs:label "MK-4(H8)"@en ;
+           skos:prefLabel "MK-4(H8)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04127
+:MPO_04127 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04062 ;
+           rdfs:label "MK-5(H8)"@en ;
+           skos:altLabel "Menaquinone-5(H8)"@en ;
+           skos:prefLabel "MK-5(H8)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04128
+:MPO_04128 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04062 ;
+           rdfs:label "MK-5(H10)"@en ;
+           skos:altLabel "Menaquinone-5(H10)"@en ;
+           skos:prefLabel "MK-5(H10)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04129
+:MPO_04129 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04063 ;
+           rdfs:label "MK-6(H4)"@en ;
+           skos:altLabel "Menaquinone-6(H4)"@en ;
+           skos:prefLabel "MK-6(H4)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04130
+:MPO_04130 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04063 ;
+           rdfs:label "MK-6(H8)"@en ;
+           skos:altLabel "Menaquinone-6(H8)"@en ;
+           skos:prefLabel "MK-6(H8)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04131
+:MPO_04131 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04063 ;
+           rdfs:label "MK-6(H10)"@en ;
+           skos:altLabel "Menaquinone-6(H10)"@en ;
+           skos:prefLabel "MK-6(H10)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04132
+:MPO_04132 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04064 ;
+           rdfs:label "MK-7(H0)"@en ;
+           skos:altLabel "Menaquinone-7(H0)"@en ;
+           skos:prefLabel "MK-7(H0)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04133
+:MPO_04133 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04064 ;
+           rdfs:label "MK-7(H2)"@en ;
+           skos:altLabel "Menaquinone-7(H2)"@en ;
+           skos:prefLabel "MK-7(H2)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04134
+:MPO_04134 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04064 ;
+           rdfs:label "MK-7(H4)"@en ;
+           skos:altLabel "Menaquinone-7(H4)"@en ;
+           skos:prefLabel "MK-7(H4)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04135
+:MPO_04135 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04064 ;
+           rdfs:label "MK-7(H14)"@en ;
+           skos:altLabel "Menaquinone-7(H14)"@en ;
+           skos:prefLabel "MK-7(H14)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04136
+:MPO_04136 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04065 ;
+           rdfs:label "MK-8(H6)"@en ;
+           skos:altLabel "Menaquinone-8(H6)"@en ;
+           skos:prefLabel "MK-8(H6)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04137
+:MPO_04137 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04066 ;
+           rdfs:label "MK-9(H10)"@en ;
+           skos:prefLabel "MK-9(H10)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04138
+:MPO_04138 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04060 ;
+           rdfs:label "MMK"@en ;
+           skos:altLabel "Methylmenaquinone"@en ;
+           skos:prefLabel "MMK"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04139
+:MPO_04139 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04138 ;
+           rdfs:label "MMK-5"@en ;
+           skos:altLabel "Methylmenaquinone-5"@en ;
+           skos:prefLabel "MMK-5"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04140
+:MPO_04140 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04138 ;
+           rdfs:label "MMK-6"@en ;
+           skos:altLabel "Methylmenaquinone-6"@en ;
+           skos:prefLabel "MMK-6"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04141
+:MPO_04141 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04138 ;
+           rdfs:label "MMK-7"@en ;
+           skos:altLabel "Methylmenaquinone-7"@en ;
+           skos:prefLabel "MMK-7"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04142
+:MPO_04142 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04138 ;
+           rdfs:label "MMK-8"@en ;
+           skos:altLabel "Methylmenaquinone-8"@en ;
+           skos:prefLabel "MMK-8"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04143
+:MPO_04143 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04139 ;
+           rdfs:label "MMK-5(H10)"@en ;
+           skos:altLabel "Methylmenaquinone-5(H10)"@en ;
+           skos:prefLabel "MMK-5(H10)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04144
+:MPO_04144 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04140 ;
+           rdfs:label "MMK-6(H12)"@en ;
+           skos:altLabel "Methylmenaquinone-6(H12)"@en ;
+           skos:prefLabel "MMK-6(H12)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04145
+:MPO_04145 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04079 ;
+           rdfs:label "MTK-6"@en ;
+           skos:altLabel "Methylmenaquinone-6"@en ;
+           skos:prefLabel "MTK-6"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04146
+:MPO_04146 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04088 ;
+           rdfs:label "Q-10(H2)"@en ;
+           skos:altLabel "Ubiquinone-10(H2)"@en ;
+           skos:prefLabel "Q-10(H2)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04147
+:MPO_04147 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04088 ;
+           rdfs:label "Q-10(H4)"@en ;
+           skos:altLabel "Ubiquinone-10(H4)"@en ;
+           skos:prefLabel "Q-10(H4)"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04148
+:MPO_04148 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04060 ;
+           rdfs:label "SQ"@en ;
+           rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/17267967> ;
+           skos:altLabel "Smaragdiquinone"@en ;
+           skos:prefLabel "SQ"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04149
+:MPO_04149 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04148 ;
+           rdfs:label "SQA-8"@en ;
+           skos:altLabel "Smaragdiquinone A-8"@en ;
+           skos:prefLabel "SQA-8"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04150
+:MPO_04150 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04148 ;
+           rdfs:label "SQB-8"@en ;
+           skos:altLabel "Smaragdiquinone B-8"@en ;
+           skos:prefLabel "SQB-8"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04151
+:MPO_04151 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04017 ;
+           rdfs:label "Organoheterotrophic"@en ;
+           skos:altLabel "Organoheterotroph"@en ;
+           skos:prefLabel "Organoheterotrophic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_04152
+:MPO_04152 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_04040 ;
+           rdfs:label "Obligate chemolithoautotrophic"@en ,
+                      "偏性独立栄養化学合成性"@ja ;
+           skos:altLabel "Obligate chemoautolithotroph"@en ,
+                         "Obligate chemolithoautotroph"@en ,
+                         "偏性独立栄養化学合成細菌"@ja ;
+           skos:prefLabel "Obligate chemolithoautotroph"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_05000
+:MPO_05000 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00000 ;
+           rdfs:label "Development"@en ;
+           skos:prefLabel "Development"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_05001
+:MPO_05001 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_05000 ;
+           rdfs:label "Resting spore forming"@en ,
+                      "休眠胞子形成"@ja ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Akinete> ;
+           skos:altLabel "Akinete forming"@en ,
+                         "アキネート形成"@ja ;
+           skos:prefLabel "Resting spore forming"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_05002
+:MPO_05002 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_05000 ;
+           rdfs:label "Hetelocyst forming"@en ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Heterocyst> ;
+           skos:prefLabel "Hetelocyst forming"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_06000
+:MPO_06000 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00000 ;
+           rdfs:label "Serotype"@en ;
+           skos:prefLabel "Serotype"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_07000
+:MPO_07000 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00000 ;
+           rdfs:label "Staining"@en ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Staining> ;
+           skos:altLabel "Cell staining"@en ,
+                         "細胞染色"@ja ;
+           skos:prefLabel "Staining"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_07001
+:MPO_07001 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_07000 ;
+           rdfs:label "Gram stain"@en ,
+                      "グラム染色"@ja ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Gram_staining> ;
+           skos:prefLabel "Gram stain"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_07002
+:MPO_07002 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_07001 ;
+           rdfs:label "Gram positive"@en ,
+                      "グラム陽性"@ja ;
+           skos:altLabel "Gram+"@en ;
+           skos:prefLabel "Gram positive"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_07003
+:MPO_07003 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_07001 ;
+           rdfs:label "Gram negative"@en ,
+                      "グラム陰性"@ja ;
+           skos:altLabel "Gram-"@en ;
+           skos:prefLabel "Gram negative"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_07004
+:MPO_07004 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_07001 ;
+           rdfs:label "Gram variable"@en ;
+           skos:prefLabel "Gram variable"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_07005
+:MPO_07005 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_07000 ;
+           rdfs:label "Ziehl–Neelsen stain"@en ,
+                      "抗酸染色"@ja ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Ziehl-Neelsen_stain> ;
+           skos:altLabel "acid-fast stain"@en ;
+           skos:prefLabel "Ziehl–Neelsen stain"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_08000
+:MPO_08000 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00000 ;
+           rdfs:label "Cell accumulation"@en ;
+           skos:prefLabel "Cell accumulation"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_08001
+:MPO_08001 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_08000 ;
+           rdfs:label "Algae bloom"@en ,
+                      "水の華"@ja ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Algal_bloom> ;
+           skos:prefLabel "Algae bloom"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_08002
+:MPO_08002 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_08001 ;
+           rdfs:label "Red tide"@en ,
+                      "赤潮"@ja ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Red_tide> ;
+           skos:prefLabel "Red tide"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_08003
+:MPO_08003 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_08001 ;
+           rdfs:label "Cyanobacterial water bloom"@en ,
+                      "アオコ"@ja ;
+           skos:prefLabel "Cyanobacterial water bloom"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_09000
+:MPO_09000 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00000 ;
+           rdfs:label "Way of life"@en ;
+           skos:prefLabel "Way of life"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_09001
+:MPO_09001 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_09000 ;
+           rdfs:label "Planktonic"@en ;
+           skos:prefLabel "Planktonic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_09002
+:MPO_09002 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_09000 ;
+           rdfs:label "Benthic"@en ;
+           skos:prefLabel "Benthic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_09003
+:MPO_09003 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_09000 ;
+           rdfs:label "Epilithic"@en ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Epilithic> ;
+           skos:altLabel "Lithophyte"@en ;
+           skos:prefLabel "Epilithic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_09004
+:MPO_09004 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_09000 ;
+           rdfs:label "Aerial"@en ;
+           skos:prefLabel "Aerial"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_11000
+:MPO_11000 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_00000 ;
+           rdfs:label "Sexual reproduction"@en ;
+           skos:prefLabel "Sexual reproduction"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_11001
+:MPO_11001 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_11000 ;
+           rdfs:label "Heterothallic"@en ,
+                      "自家不和合性"@ja ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Heterothallic> ;
+           skos:prefLabel "Heterothallic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_11002
+:MPO_11002 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_11000 ;
+           rdfs:label "Homothallic"@en ,
+                      "自家和合性"@ja ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Homothallic> ;
+           skos:prefLabel "Homothallic"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_11003
+:MPO_11003 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_11000 ;
+           rdfs:label "Isogamy"@en ,
+                      "同形配偶"@ja ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Isogamy> ;
+           skos:prefLabel "Isogamy"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_11004
+:MPO_11004 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_11000 ;
+           rdfs:label "Anisogamy"@en ,
+                      "異型配偶"@ja ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Anisogamy> ;
+           skos:altLabel "Heterogamy"@en ;
+           skos:prefLabel "Anisogamy"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_11005
+:MPO_11005 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_11000 ;
+           rdfs:label "Dioecious"@en ,
+                      "雌雄異体の"@ja ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Dioecy> ;
+           skos:prefLabel "Dioecious"@en .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_11006
+:MPO_11006 rdf:type owl:Class ;
+           rdfs:subClassOf :MPO_11000 ;
+           rdfs:label "Monoecious"@en ;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Monoecious> ;
+           skos:prefLabel "Monoecious"@en .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#Point
+<http://www.w3.org/2003/01/geo/wgs84_pos#Point> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> ;
+                                                rdfs:comment """ 
+Uniquely identified by lat/long/alt. i.e.
+
+spaciallyIntersects(P1, P2) :- lat(P1, LAT), long(P1, LONG), alt(P1, ALT),
+  lat(P2, LAT), long(P2, LONG), alt(P2, ALT).
+
+sameThing(P1, P2) :- type(P1, Point), type(P2, Point), spaciallyIntersects(P1, P2).
+  """ ,
+                                                             """A point, typically described using a coordinate system relative to Earth, such as WGS84.
+  """ ;
+                                                rdfs:label "point" .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing
+<http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://purl.jp/bio/10/mpo#MPO_02004
+:MPO_02004 rdf:type owl:NamedIndividual ;
+           skos:closeMatch <http://purl.obolibrary.org/obo/GO_0042465> .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02005
+:MPO_02005 rdf:type owl:NamedIndividual ;
+           skos:closeMatch <http://purl.obolibrary.org/obo/GO_0009454> .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02007
+:MPO_02007 rdf:type owl:NamedIndividual ;
+           skos:closeMatch <http://purl.obolibrary.org/obo/GO_0006935> .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02008
+:MPO_02008 rdf:type owl:NamedIndividual ;
+           skos:closeMatch <http://purl.obolibrary.org/obo/GO_0009453> .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02011
+:MPO_02011 rdf:type owl:NamedIndividual ;
+           skos:closeMatch <http://purl.obolibrary.org/obo/GO_0042332> .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02013
+:MPO_02013 rdf:type owl:NamedIndividual ;
+           skos:closeMatch <http://purl.obolibrary.org/obo/GO_0042331> .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02016
+:MPO_02016 rdf:type owl:NamedIndividual ;
+           skos:closeMatch <http://purl.obolibrary.org/obo/GO_0043052> .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02017
+:MPO_02017 rdf:type owl:NamedIndividual ;
+           skos:closeMatch <http://purl.obolibrary.org/obo/GO_0001966> .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02018
+:MPO_02018 rdf:type owl:NamedIndividual ;
+           skos:closeMatch <http://purl.obolibrary.org/obo/GO_0042467> .
+
+
+###  http://purl.jp/bio/10/mpo#MPO_02020
+:MPO_02020 rdf:type owl:NamedIndividual ;
+           skos:closeMatch <http://purl.obolibrary.org/obo/GO_0042466> .
+
+
+###  http://purl.obolibrary.org/obo/GO_0001966
+<http://purl.obolibrary.org/obo/GO_0001966> rdf:type owl:NamedIndividual .
+
+
+###  http://purl.obolibrary.org/obo/GO_0006935
+<http://purl.obolibrary.org/obo/GO_0006935> rdf:type owl:NamedIndividual .
+
+
+###  http://purl.obolibrary.org/obo/GO_0009453
+<http://purl.obolibrary.org/obo/GO_0009453> rdf:type owl:NamedIndividual .
+
+
+###  http://purl.obolibrary.org/obo/GO_0009454
+<http://purl.obolibrary.org/obo/GO_0009454> rdf:type owl:NamedIndividual .
+
+
+###  http://purl.obolibrary.org/obo/GO_0042331
+<http://purl.obolibrary.org/obo/GO_0042331> rdf:type owl:NamedIndividual .
+
+
+###  http://purl.obolibrary.org/obo/GO_0042332
+<http://purl.obolibrary.org/obo/GO_0042332> rdf:type owl:NamedIndividual .
+
+
+###  http://purl.obolibrary.org/obo/GO_0042465
+<http://purl.obolibrary.org/obo/GO_0042465> rdf:type owl:NamedIndividual .
+
+
+###  http://purl.obolibrary.org/obo/GO_0042466
+<http://purl.obolibrary.org/obo/GO_0042466> rdf:type owl:NamedIndividual .
+
+
+###  http://purl.obolibrary.org/obo/GO_0042467
+<http://purl.obolibrary.org/obo/GO_0042467> rdf:type owl:NamedIndividual .
+
+
+###  http://purl.obolibrary.org/obo/GO_0043052
+<http://purl.obolibrary.org/obo/GO_0043052> rdf:type owl:NamedIndividual .
+
+
+###  http://semanticscience.org/resource/SIO_000319
+<http://semanticscience.org/resource/SIO_000319> rdf:type owl:NamedIndividual ,
+                                                          owl:Thing .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing
+<http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> rdf:type owl:NamedIndividual ,
+                                                                owl:Thing .
+
+
+[ owl:unionOf [ ]
+] .
+
+#################################################################
+#    Annotations
+#################################################################
+
+:MPO_02004 rdfs:seeAlso <http://en.wikipedia.org/wiki/Kinesis_(biology)> ;
+            rdfs:label "Kinesis"@en ;
+            skos:prefLabel "Kinesis"@en ;
+            rdfs:label "動性"@ja .
+
+
+:MPO_02005 rdfs:label "走気性"@ja ;
+           skos:prefLabel "Aerotaxis"@en ;
+           rdfs:label "Aerotaxis"@en .
+
+
+:MPO_02007 rdfs:seeAlso <http://en.wikipedia.org/wiki/Chemotaxis> ;
+           rdfs:label "Chemotaxis"@en ,
+                      "走化性"@ja ;
+           skos:prefLabel "Chemotaxis"@en .
+
+
+:MPO_02008 skos:prefLabel "Energy taxis"@en ;
+           rdfs:label "Energy taxis"@en .
+
+
+:MPO_02011 rdfs:label "Gravitaxis"@en ;
+           skos:altLabel "Geotaxis"@en ;
+           skos:prefLabel "Gravitaxis"@en ;
+           rdfs:label "走地性"@ja .
+
+
+:MPO_02013 rdfs:label "走光性"@ja ,
+                      "Phototaxis"@en ;
+           skos:prefLabel "Phototaxis"@en .
+
+
+:MPO_02016 skos:prefLabel "Thermotaxis"@en ;
+           rdfs:label "Thermotaxis"@en .
+
+
+:MPO_02017 rdfs:label "Thigmotaxis"@en ;
+           skos:prefLabel "Thigmotaxis"@en ;
+           rdfs:label "接触走性"@ja .
+
+
+:MPO_02018 rdfs:label "Orthokinesis"@en ;
+           skos:prefLabel "Orthokinesis"@en .
+
+
+:MPO_02020 skos:prefLabel "Chemokinesis"@en ;
+           rdfs:label "Chemokinesis"@en .
+
+
+:MPO_03006 rdfs:label "耐塩性"@ja ;
+           skos:prefLabel "Classification of growth salinity"@en ;
+           rdfs:label "Classification of growth salinity"@en .
+
+
+:MPO_10004 rdfs:label "growth pH"@en ;
+           skos:prefLabel "growth pH"@en .
+
+
+:MPO_10005 rdfs:label "optimal growth pH"@en ;
+           skos:prefLabel "optimal growth pH"@en .
+
+
+:MPO_10006 rdfs:label "minimum growth pH"@en ;
+           skos:prefLabel "minimum growth pH"@en .
+
+
+:MPO_10007 skos:prefLabel "maximum growth pH"@en ;
+           rdfs:label "maximum growth pH"@en .
+
+
+:MPO_10008 skos:prefLabel "growth temperature"@en ;
+           rdfs:label "growth temperature"@en .
+
+
+:MPO_10009 rdfs:label "optimal growth temperature"@en ;
+           skos:prefLabel "optimal growth temperature"@en .
+
+
+:MPO_10010 skos:prefLabel "minimum growth temperature"@en ;
+           rdfs:label "minimum growth temperature"@en .
+
+
+:MPO_10011 skos:prefLabel "maximum growth temperature"@en ;
+           rdfs:label "maximum growth temperature"@en .
+
+
+:MPO_10020 rdfs:label "minimum optimal growth temperature"@en ;
+           skos:prefLabel "minimum optimal growth temperature"@en .
+
+
+:MPO_10021 rdfs:label "maximum optimal growth temperature"@en ;
+           skos:prefLabel "maximum optimal growth temperature"@en .
+
+
+:MPO_10022 rdfs:label "minimum optimal growth ph"@en ;
+           skos:prefLabel "minimum optimal growth ph"@en .
+
+
+:MPO_10023 rdfs:label "maximum optimal growth ph"@en ;
+           skos:prefLabel "maximum optimal growth ph"@en .
+
+
+:MPO_10028 rdfs:label "growth salinity"@en ;
+           skos:prefLabel "growth salinity"@en .
+
+
+:MPO_10029 skos:prefLabel "maximal growth salinity"@en ;
+           rdfs:label "maximal growth salinity"@en .
+
+
+:MPO_10030 rdfs:label "minimum growth salinity"@en ;
+           skos:prefLabel "minimum growth salinity"@en .
+
+
+:MPO_10031 skos:prefLabel "optimal growth salinity"@en ;
+           rdfs:label "optimal growth salinity"@en .
+
+
+:MPO_10032 skos:prefLabel "maximum optimal growth salinity"@en ;
+           rdfs:label "maximum optimal growth salinity"@en .
+
+
+:MPO_10033 skos:prefLabel "minimum optimal growth salinity"@en ;
+           rdfs:label "minimum optimal growth salinity"@en .
+
+
+:MPO_10034 rdfs:label "is inhabited by"@en ;
+           skos:prefLabel "is inhabited by"@en .
+
+
+<http://www.w3.org/2003/01/geo/wgs84_pos#> dc:date "$Date: 2009/04/20 15:00:30 $" ;
+                                           rdfs:label "geo" ;
+                                           dc:description """A vocabulary for representing latitude, longitude and 
+ altitude information in the WGS84 geodetic reference datum. 
+ Version $Id: wgs84_pos.rdf,v 1.22 2009/04/20 15:00:30 timbl Exp $. See http://www.w3.org/2003/01/geo/ for more details.""" ;
+                                           rdfs:comment """
+Recent changes to this namespace:
+$Log: wgs84_pos.rdf,v $
+Revision 1.22  2009/04/20 15:00:30  timbl
+Remove the time bits which have been deal with elsewhere eg in iCal.
+
+Revision 1.21  2009/04/20 12:52:47  timbl
+try again
+
+Revision 1.20  2009/04/20 12:42:11  timbl
+Add Event (edited ages ago and never checked in), and location (following discussion http://chatlogs.planetrdf.com/swig/2009-04-20#T12-36-09)
+
+Revision 1.19  2009/04/20 12:36:31  timbl
+Add Event (edited ages ago and never checked in), and location (following discussion http://chatlogs.planetrdf.com/swig/2009-04-20#T12-36-09)
+
+Revision 1.18  2006/02/01 22:01:04  danbri
+Clarified that lat and long are decimal degrees, and that alt is decimal metres about local reference ellipsoid
+
+Revision 1.17  2004/02/06 17:38:12  danbri
+Fixed a bad commit screwup
+
+Revision 1.15  2003/04/19 11:24:08  danbri
+Fixed the typo even more.
+
+Revision 1.14  2003/04/19 11:16:56  danbri
+fixed a typo
+
+Revision 1.13  2003/02/19 22:27:27  connolly
+relaxed domain constraints on lat/long/alt from Point to SpatialThing
+
+Revision 1.12  2003/01/12 01:41:41  danbri
+Trying local copy of XSLT doc.
+
+Revision 1.11  2003/01/12 01:20:18  danbri
+added a link to morten's xslt rdfs viewer.
+
+Revision 1.10  2003/01/11 18:56:49  danbri
+Removed datatype range from lat and long properties, since they would
+have required each occurance of the property to mention the datatype.
+
+Revision 1.9  2003/01/11 11:41:31  danbri
+Another typo; repaired rdfs:Property to rdf:Property x4
+
+Revision 1.8  2003/01/11 11:05:02  danbri
+Added an rdfs:range for each lat/long/alt property,
+http://www.w3.org/2001/XMLSchema#float
+
+Revision 1.7  2003/01/10 20:25:16  danbri
+Longer rdfs:comment for Point, trying to be Earth-centric and neutral about
+coordinate system(s) at the same time. Feedback welcomed.
+
+Revision 1.6  2003/01/10 20:18:30  danbri
+Added CVS log comments into the RDF/XML as an rdfs:comment property of the
+vocabulary. Note that this is not common practice (but seems both harmless
+and potentially useful).
+
+
+revision 1.5
+date: 2003/01/10 20:14:31;  author: danbri;  state: Exp;  lines: +16 -5
+Updated schema:
+Added a dc:date, added url for more info. Changed the rdfs:label of the
+namespace from gp to geo. Added a class Point, set as the rdfs:domain of
+each property. Added XML comment on the lat_long property suggesting that
+we might not need it (based on #rdfig commentary from implementors).
+
+revision 1.4
+date: 2003/01/10 20:01:07;  author: danbri;  state: Exp;  lines: +6 -5
+Fixed typo; several rdfs:about attributes are now rdf:about. Thanks to MortenF in
+#rdfig for catching this error.
+
+revision 1.3
+date: 2003/01/10 11:59:03;  author: danbri;  state: Exp;  lines: +4 -3
+fixed buglet in vocab, added more wgs links
+
+revision 1.2
+date: 2003/01/10 11:01:11;  author: danbri;  state: Exp;  lines: +4 -4
+Removed alt from the as-a-flat-string property, and switched from
+space separated to comma separated.
+
+revision 1.1
+date: 2003/01/10 10:53:23;  author: danbri;  state: Exp;
+basic geo vocab
+
+""" ;
+                                           dc:title "WGS84 Geo Positioning: an RDF vocabulary" .
+
+
+<http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> rdfs:label "SpatialThing" ;
+                                                       rdfs:comment """Anything with spatial extent, i.e. size, shape, or position.
+ e.g. people, places, bowling balls, as well as abstract areas like cubes.
+""" .
+
+
+<http://www.w3.org/2003/01/geo/wgs84_pos#lat_long> rdfs:comment "A comma-separated representation of a latitude, longitude coordinate." ;
+                                                   rdfs:label "lat/long" .
+
+
+<http://www.w3.org/2003/01/geo/wgs84_pos#location> rdfs:label "location" ;
+                                                   rdfs:comment """The relation between something and the point, 
+ or other geometrical thing in space, where it is.  For example, the realtionship between
+ a radio tower and a Point with a given lat and long.
+ Or a relationship between a park and its outline as a closed arc of points, or a road and
+ its location as a arc (a sequence of points).
+ Clearly in practice there will be limit to the accuracy of any such statement, but one would expect
+ an accuracy appropriate for the size of the object and uses such as mapping .
+ """ .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
